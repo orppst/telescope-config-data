@@ -1,44 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
-<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="configuration">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" name="options">
+                <xs:element name="options" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element maxOccurs="unbounded" name="option">
+                            <xs:element name="option" maxOccurs="unbounded" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation> Anglo-Australian Telescope </xs:documentation>
+                                </xs:annotation>
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="value" type="xs:string" />
-                                        <xs:element minOccurs="0" name="subfields">
+                                        <xs:element type="xs:string" name="value"/>
+                                        <xs:element name="subfields" minOccurs="0">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element minOccurs="0" maxOccurs="unbounded" name="optionlist">
+                                                    <xs:element name="optionlist" maxOccurs="unbounded" minOccurs="0">
                                                         <xs:complexType>
-                                                            <xs:attribute name="name" type="xs:string" use="required" />
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute type="xs:string" name="name" use="optional"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
                                                         </xs:complexType>
                                                     </xs:element>
-                                                    <xs:element minOccurs="0" name="text">
+                                                    <xs:element name="text" maxOccurs="unbounded" minOccurs="0">
                                                         <xs:complexType>
-                                                            <xs:attribute name="name" type="xs:string" use="required" />
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute type="xs:string" name="name" use="optional"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="boolean" maxOccurs="unbounded" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute type="xs:string" name="name" use="optional"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
                                                         </xs:complexType>
                                                     </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element minOccurs="0" name="dependencies">
+                                        <xs:element name="dependencies" minOccurs="0">
                                             <xs:complexType>
                                                 <xs:sequence>
                                                     <xs:element name="or">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="select">
+                                                                <xs:element name="select" maxOccurs="unbounded" minOccurs="0">
                                                                     <xs:complexType>
                                                                         <xs:sequence>
-                                                                            <xs:element name="value" type="xs:string" />
+                                                                            <xs:element type="xs:string" name="value"/>
                                                                         </xs:sequence>
-                                                                        <xs:attribute name="name" type="xs:string" use="required" />
+                                                                        <xs:attribute type="xs:string" name="name" use="optional"/>
                                                                     </xs:complexType>
                                                                 </xs:element>
                                                             </xs:sequence>
@@ -51,11 +69,11 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute name="name" type="xs:string" use="required" />
+                        <xs:attribute type="xs:string" name="name" use="optional"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="telescope" type="xs:string" use="required" />
+            <xs:attribute type="xs:string" name="telescope"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

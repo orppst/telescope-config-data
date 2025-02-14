@@ -71,7 +71,7 @@
       	   		</dependencies>      	   
         	</option>
         	<!-- OHP 193 TELESCOPE; fin ajout instrument visiteur-->
-
+    </options>
      <options name="instrumentUrl">   	
       	    <option>
       	   	<value>http://www.obs-hp.fr/guide/sophie/sophie-eng.shtml</value>
@@ -92,9 +92,6 @@
       	   		<dependencies><or><select name="instrumentConfigurations"><value>Carelec</value></select></or></dependencies>      	   
       	    </option>
      </options>
-        	
-  
-  </options>
   
   <options name="instrumentMode">
   
