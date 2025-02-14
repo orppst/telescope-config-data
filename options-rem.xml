@@ -1,0 +1,185 @@
+<configuration telescope="REM">
+  <options name="telescopeConfigurations">
+    <option>
+        <value>REM</value>
+        <subfields>
+            <optionlist name="instrumentConfigurations"/>
+        </subfields>
+    </option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+            <!-- REM TELESCOPE -->
+             <option>
+                <value>remir</value>
+                <subfields>
+                    <optionlist name="instrumentUrl" />
+                    <optionlist name="telescopeMode" />
+                    <optionlist name="telescopeScheduling" />
+	       	    <boolean name="telescopeHours" />
+                    <optionlist name="instrumentFilter" />
+                    <text name="instrumentCustomFilter"/>
+                    <optionlist name="instrumentMode" />
+                    <!--<optionlist name="instrumentGrism" />-->
+                    <text name="instrumentComments"  required="false"/>
+                </subfields>
+
+                     <dependencies>
+                    <or>
+                        <select name="telescopeConfigurations"><value>REM</value></select>
+                    </or>
+                     </dependencies>             
+             </option>
+             <option>
+                <value>ROS2</value>
+                <subfields>
+                    <optionlist name="instrumentUrl" />
+                    <optionlist name="telescopeMode" />
+                    <optionlist name="telescopeScheduling" />
+	       	    <boolean name="telescopeHours" />
+                    <optionlist name="instrumentFilter" />
+                    <optionlist name="instrumentMode" />
+                    <text name="instrumentComments"    required="false"/>
+                </subfields>
+                     <dependencies>
+                    <or>
+                        <select name="telescopeConfigurations"><value>REM</value></select>
+                    </or>
+                     </dependencies>             
+            </option>
+        </options>
+
+    <options name="instrumentUrl">
+            <option>
+                 <value>http://www.rem.inaf.it/remir.html</value>
+                     <dependencies><or><select name="instrumentConfigurations"><value>remir</value></select></or></dependencies>             
+             </option>
+              <option>
+                 <value>http://www.rem.inaf.it/ross2.html</value>
+                     <dependencies><or><select name="instrumentConfigurations"><value>ROS2</value></select></or></dependencies>             
+             </option>
+    </options>
+
+    <options name="instrumentMode">
+                         <option>
+                    <value>Imaging</value>
+                    <dependencies>
+                        <or>
+                            <select name="instrumentConfigurations">
+                                <value>ROS2</value>
+                            </select>
+                        </or>
+                    </dependencies>
+                </option>
+                                
+                <option>
+                    <value>Imaging</value>
+                    <dependencies>
+                        <or>
+                            <select name="instrumentConfigurations">
+                                <value>remir</value>
+                            </select>
+                        </or>
+                    </dependencies>
+                </option>
+<!--                <option>
+                    <value>Spectroscopy</value>
+                    <dependencies>
+                        <or>
+                            <select name="instrumentConfigurations">
+                                <value>remir</value>
+                            </select>
+                        </or>
+                    </dependencies>
+                </option>
+-->
+    </options>
+<!--    
+    <options name="instrumentGrismw">
+    
+    
+            <option>
+                                <value>GR1</value>       
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations"><value>remir</value></select>
+                </or>
+                </dependencies>   
+            </option>  
+    </options>
+-->
+        <options  name="instrumentFilter">
+             <option>
+                <value>z</value>
+                <dependencies>
+                <or>
+                    <select name="instrumentConfigurations"><value>remir</value></select>
+                </or>
+                </dependencies>   
+            </option>
+             <option>
+                <value>J</value>
+                <dependencies>
+                <or>
+                    <select name="instrumentConfigurations"><value>remir</value></select>
+                </or>
+                </dependencies>   
+            </option>
+            <option>
+                <value>H</value>
+                <dependencies>
+                <or>
+                    <select name="instrumentConfigurations"><value>remir</value></select>
+                </or>
+                </dependencies>   
+            </option>
+            <option>
+                <value>K'</value>
+                <dependencies>
+                <or>
+                    <select name="instrumentConfigurations"><value>remir</value></select>
+                </or>
+                </dependencies>   
+            </option>
+             <option>
+                <value>g',r',i',z' SDSS</value>
+                <dependencies>
+                <or>
+                    <select name="instrumentConfigurations"><value>ROS2</value></select>
+                </or>
+                </dependencies>   
+            </option>  
+
+</options>
+<options name="telescopeScheduling">
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>remir</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>remir</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>remir</value></select></or></dependencies>
+        </option>
+
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ROS2</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ROS2</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ROS2</value></select></or></dependencies>
+        </option>
+
+</options>
+</configuration>            
+

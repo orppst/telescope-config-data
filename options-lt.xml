@@ -1,0 +1,409 @@
+
+<configuration telescope="LT">
+  <options name="telescopeConfigurations">
+	<option>
+		<value>LT</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+	<!-- LT TELESCOPE -->
+        	 <option>
+        		<value>IOO</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+	       			<optionlist name="instrumentFilter"/>
+	       			<text name="instrumentCustomFilter"/>
+	       			<text name="instrumentComments"/>
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+
+        	 <option>
+        		<value>IOI</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+	       			<optionlist name="instrumentFilter"/>
+	       			<text name="instrumentCustomFilter"/>
+	       			<text name="instrumentComments"/>
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+
+         	<option>
+        		<value>FRODOSpec</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+	       			<optionlist name="instrumentMode" />
+	       			<text name="instrumentComments"/>
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+
+        	<option>
+        		<value>RISE</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+
+<!--
+        	<option>
+        		<value>THOR</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+-->
+
+        	<option>
+        		<value>MOPTOP</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option> 
+      	
+        	<option>
+        		<value>SPRAT</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option> 
+ <!--       	
+         	<option>
+        		<value>LOTUS</value>
+        		<subfields>        		
+		       		<optionlist name="telescopeMode" />
+	       			<optionlist name="telescopeMoon" />
+	       			<optionlist name="telescopeScheduling" />
+	       			<boolean name="telescopeHours" />
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>LT</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>       	
+-->        	
+        	
+	</options>
+
+	<options name="instrumentUrl">
+       	          	    <option>
+      	   	<value>http://telescope.livjm.ac.uk/TelInst/Inst/IOO/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>IOO</value></select></or></dependencies>      	   
+      	   </option>
+      	     <option>
+      	   	<value>http://telescope.livjm.ac.uk/TelInst/Inst/IOI/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>IOI</value></select></or></dependencies>      	   
+      	   </option>
+      	     <option>
+      	   	<value>http://telescope.livjm.ac.uk/TelInst/Inst/FRODOspec/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>FRODOSpec</value></select></or></dependencies>      	   
+      	   </option>
+      	     <option>
+      	   	<value>http://telescope.livjm.ac.uk/TelInst/Inst/RISE/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>RISE</value></select></or></dependencies>      	   
+	  </option>
+            <option>
+      	   	<value>http://telescope.livjm.ac.uk/TelInst/Inst/MOPTOP/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>MOPTOP</value></select></or></dependencies>      	   
+      	   </option>
+      	     <option>
+      	   	<value>http://telescope.livjm.ac.uk/TelInst/Inst/SPRAT/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>SPRAT</value></select></or></dependencies>      	   
+      	   </option>
+     	   
+	</options>
+
+	<options name="instrumentFilter">	
+		<option>
+				<value>V</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+						</or>
+				</dependencies>      	   
+			</option>   
+			<option>
+				<value>B</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+					</or>
+				</dependencies>      	   
+			</option>   
+			<option>
+				<value>i</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+					</or>
+				</dependencies>      	   
+			</option>
+			<option>
+				<value>Halpha</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+						
+					</or>
+				</dependencies>      	   
+			</option>  
+		    <option>
+				<value>u</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+					</or>
+				</dependencies>      	   
+			</option>   
+			<option>
+				<value>g</value>
+				<dependencies>
+					<or>
+						
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+					</or>
+				</dependencies>      	   
+			</option>   
+			<option>
+				<value>r</value>
+				<dependencies>
+					<or>
+						
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+					</or>
+				</dependencies>      	   
+			</option>   
+			<option>
+				<value>z</value>
+				<dependencies>
+					<or>
+					 	
+						<select name="instrumentConfigurations"><value>IOO</value></select>
+					</or>
+				</dependencies>      	   
+			</option>    
+		
+<!-- IO:I filters are not changeable by the user. It is fixed H
+     We could swap to J or J+H for an entire semester but that would depend on
+     many users wanting that. Currently we believe H is the most popular. -->
+<!--
+		    <option>
+				<value>J</value>
+				<dependencies>
+					<or>
+						
+						<select name="instrumentConfigurations"><value>IOI</value></select>
+		    			</or>
+				</dependencies>      	   
+			</option>   
+-->
+			<option>
+				<value>H</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>IOI</value></select>
+						
+					</or>
+				</dependencies>      	   
+			</option>
+<!--
+			<option>
+				<value>J+H</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>IOI</value></select>
+						
+					</or>
+				</dependencies>      	   
+			</option> 
+-->
+	
+	</options>
+	
+	<options name="instrumentMode">
+        
+
+				<option>
+					<value>low res</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>FRODOSpec</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>hi res</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>FRODOSpec</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+	</options>
+<options name="telescopeScheduling">
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>IOO</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>IOO</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>IOO</value></select></or></dependencies>
+        </option>
+
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>IOI</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>IOI</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>IOI</value></select></or></dependencies>
+        </option>
+
+
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>FRODOSpec</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>FRODOSpec</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>FRODOSpec</value></select></or></dependencies>
+        </option>
+
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>RISE</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>RISE</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>RISE</value></select></or></dependencies>
+        </option>
+
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MOPTOP</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MOPTOP</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MOPTOP</value></select></or></dependencies>
+        </option>
+
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>SPRAT</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>SPRAT</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>SPRAT</value></select></or></dependencies>
+        </option>
+
+
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>LOTUS</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>LOTUS</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>LOTUS</value></select></or></dependencies>
+        </option>
+
+</options>	
+</configuration>	
+

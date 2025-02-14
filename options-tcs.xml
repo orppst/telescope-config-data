@@ -1,0 +1,119 @@
+<configuration telescope="TCS">
+  <options name="telescopeConfigurations">
+	<option>
+		<value>TCS</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+	<!-- TCS TELESCOPE -->
+        	 <option>
+        		<value>MuSCAT2: simultaneous griz photometry</value>
+        		<subfields>        		
+        			<optionlist name="instrumentUrl" />
+		       		<optionlist name="instrumentFilter"/>
+	       			<text name="instrumentCustomFilter"/>
+	       			<text name="instrumentComments"/>
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TCS</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	 <option>
+        		<value>FastCam: optical Lucky Imager</value>
+        		<subfields>        		
+        			<optionlist name="instrumentUrl" />
+	       			<optionlist name="instrumentFilter"/>
+	       			<text name="instrumentCustomFilter"/>
+	       			<text name="instrumentComments"/>
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TCS</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+	</options>
+        
+       <options name="instrumentUrl">	
+	 		<option>
+      	   	<value>http://www.iac.es/OOCC/iac-managed-telescopes/telescopio-carlos-sanchez/muscat2/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>MuSCAT2: simultaneous griz photometry</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.iac.es/OOCC/iac-managed-telescopes/telescopio-carlos-sanchez/fastcam/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>FastCam: optical Lucky Imager</value></select></or></dependencies>      	      	    </option>
+				</options>
+
+
+		<options name="instrumentFilter">	
+			<option>
+				<value>g</value>
+				<dependencies>
+					<or>
+						
+						<select name="instrumentConfigurations"><value>MuSCAT2: simultaneous griz photometry</value></select>
+						
+	        			</or>
+				</dependencies>      	   
+			</option>   
+			<option>
+				<value>r</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>MuSCAT2: simultaneous griz photometry</value></select>
+											
+					</or>
+				</dependencies>      	   
+			</option> 
+		 <option>
+      	   		<value>i</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>MuSCAT2: simultaneous griz photometry</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>      
+      	
+      	 <option>
+      	   		<value>z</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>MuSCAT2: simultaneous griz photometry</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>       	      	   
+      	   			 <option>
+      	   		<value>I</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>FastCam: optical Lucky Imager</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option> 
+      	    <option>
+      	   		<value>R</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>FastCam: optical Lucky Imager</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>  
+	    <option>
+      	   		<value>V</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>FastCam: optical Lucky Imager</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>  
+		     	 
+      	</options>
+
+  
+ </configuration>

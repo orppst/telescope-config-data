@@ -1,0 +1,540 @@
+<configuration telescope="SALT">
+    <options name="telescopeConfigurations">
+        <option>
+            <value>SALT</value>
+            <subfields>
+                <optionlist name="instrumentConfigurations"/>
+            </subfields>
+        </option>
+    </options>
+
+    <options name="instrumentConfigurations">
+        <option>
+            <value>Salticam</value>
+            <subfields>
+                <optionlist name="instrumentUrl"/>
+                <optionlist name="instrumentFilter"/>
+            </subfields>
+            <dependencies>
+                <or>
+                    <select name="telescopeConfigurations">
+                        <value>SALT</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>RSS</value>
+            <subfields>
+                <optionlist name="instrumentGrating"/>
+                <optionlist name="instrumentMode"/>
+                <optionlist name="instrumentUrl"/>
+            </subfields>
+            <dependencies>
+                <or>
+                    <select name="telescopeConfigurations">
+                        <value>SALT</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>HRS</value>
+            <subfields>
+                <optionlist name="instrumentMode"/>
+                <optionlist name="instrumentUrl"/>
+            </subfields>
+            <dependencies>
+                <or>
+                    <select name="telescopeConfigurations">
+                        <value>SALT</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+    </options>
+
+    <options name="instrumentFilter">
+        <option>
+            <value>Fused Silica Clear</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Johnson U</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Johnson B</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                    <select name="instrumentConfigurations">
+                        <value>BVIT</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Johnson V</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                    <select name="instrumentConfigurations">
+                        <value>BVIT</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Cousins R</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                    <select name="instrumentConfigurations">
+                        <value>BVIT</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Cousins I</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>380 nm 40 nm FWHM</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SDSS u'</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SDSS g'</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SDSS r'</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SDSS i'</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SDSS z'</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>H alpha</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                    <select name="instrumentConfigurations">
+                        <value>BVIT</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>H beta narrow</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>H beta wide</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Stroemgren u</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Stroemgren g</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Stroemgren r</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Stroemgren z</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Stroemgren y</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SRE 1</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SRE 2</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SRE 3</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>SRE4</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+    </options>
+
+    <options name="instrumentGrating">
+        <option>
+            <value>pg0300</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>pg0900</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>pg1300</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+    <option>
+        <value>pg1800</value>
+        <dependencies>
+            <or>
+                <select name="instrumentConfigurations">
+                    <value>RSS</value>
+                </select>
+            </or>
+        </dependencies>
+    </option>
+    <option>
+        <value>pg2300</value>
+        <dependencies>
+            <or>
+                <select name="instrumentConfigurations">
+                    <value>RSS</value>
+                </select>
+            </or>
+        </dependencies>
+    </option>
+    <option>
+        <value>pg3000</value>
+        <dependencies>
+            <or>
+                <select name="instrumentConfigurations">
+                    <value>RSS</value>
+                </select>
+            </or>
+        </dependencies>
+    </option>
+    <option>
+        <value>None</value>
+        <dependencies>
+            <or>
+                <select name="instrumentConfigurations">
+                    <value>RSS</value>
+                </select>
+            </or>
+        </dependencies>
+    </option>
+   </options>
+
+    <options name="instrumentMode">
+        <option>
+            <value>Low Resolution</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>HRS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Medium Resolution</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>HRS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>High Resolution</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>HRS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>High Stability</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>HRS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Spectroscopy</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Spectropolarimetry</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Multi-Object Spectroscopy</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Imaging</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Imaging Polarimetry</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>RSS</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+    </options>
+
+    <options name="instrumentReadOut">
+        <option>
+            <value>Normal</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Frame Transfer</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Slot Mode</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+        <option>
+            <value>Drift Scan</value>
+            <dependencies>
+                <or>
+                    <select name="instrumentConfigurations">
+                        <value>Salticam</value>
+                    </select>
+                </or>
+            </dependencies>
+        </option>
+    </options>
+
+    <options name="instrumentUrl">
+        <option>
+        <value>http://pysalt.salt.ac.za/proposal_calls/current/ProposalCall.html</value>
+        <dependencies>
+            <or>
+                <select name="instrumentConfigurations">
+                    <value>HRS</value>
+                </select>
+                <select name="instrumentConfigurations">
+                    <value>RSS</value>
+                </select>
+                <select name="instrumentConfigurations">
+                    <value>Salticam</value>
+                </select>
+            </or>
+        </dependencies>
+        </option>
+    </options>
+
+</configuration>

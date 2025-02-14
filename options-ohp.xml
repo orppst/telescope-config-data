@@ -1,0 +1,233 @@
+<configuration telescope="OHP193">
+  <options name="telescopeConfigurations">
+	<option>
+		<value>OHP193</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+  </options>
+  
+   <options name="instrumentConfigurations">
+  <!-- OHP 193 TELESCOPE -->
+      	   <option>
+        		<value>SOPHIE</value>
+        		<subfields>
+        			<optionlist name="instrumentUrl"/>
+	        		<optionlist name="instrumentMode"/>
+	        		<optionlist name="instrumentReadOut"/>
+	        		<text name="instrumentComments"/>
+	        	</subfields>
+          		
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>OHP193</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+<!-- OHP 193 TELESCOPE; modification pour retirer Carelec Herve Le Coroller; herve.lecoroller@oamp.fr; 01/08/2012-->
+
+     	     <!-- <option>
+        		<value>Carelec</value>
+        		<subfields>        		
+        			<optionlist name="instrumentUrl" />
+		       		<optionlist name="instrumentGrating"/>
+	       			<text name="instrumentWavelength"/>
+	        		<optionlist name="instrumentOrderFilter"/>
+	        		<text name="instrumentComments"/>
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>OHP193</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>-->
+    <!-- OHP 193 TELESCOPE; modification pour MISTRAL Auguste LE VAN SUU  01/02/2022-->
+    <option>
+      <value>MISTRAL</value>
+      <subfields>
+        <optionlist name="instrumentUrl" />
+        <text name="instrumentComments" />
+      </subfields>
+      <dependencies>
+        <or>
+          <select name="telescopeConfigurations">
+            <value>OHP193</value>
+          </select>
+        </or>
+      </dependencies>
+    </option>
+    <!-- OHP 193 TELESCOPE; fin ajout MISTRAL-->
+ <!-- OHP 193 TELESCOPE; ajout instrument visiteur Herve Le Coroller herve.lecoroller@oamp.fr-->
+			<option>
+        		<value>Visitor Instrument</value>
+        		<subfields>        		
+	        		<text name="instrumentComments"/>
+		       	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>OHP193</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	<!-- OHP 193 TELESCOPE; fin ajout instrument visiteur-->
+
+     <options name="instrumentUrl">   	
+      	    <option>
+      	   	<value>http://www.obs-hp.fr/guide/sophie/sophie-eng.shtml</value>
+      	   		<dependencies>
+                          <or>
+                              <select name="instrumentConfigurations">
+                              <value>SOPHIE</value>
+                              </select>
+                          </or>
+                        </dependencies>      	   
+      	    </option>
+            <option>
+                <value>http://http://www.obs-hp.fr/guide/mistral/MISTRAL_spectrograph_camera.shtml#H2</value>
+                        <dependencies><or><select name="instrumentConfigurations"> <value>MISTRAL</value></select></or></dependencies>
+            </option>
+      	    <option>
+      	   	<value>http://www.obs-hp.fr/guide/carelec/carelec-eng.shtml</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>Carelec</value></select></or></dependencies>      	   
+      	    </option>
+     </options>
+        	
+  
+  </options>
+  
+  <options name="instrumentMode">
+  
+   <option>
+      	   		<value>High-Efficiency mode (R=40000)</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>SOPHIE</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>       	      	   
+      	   <option>
+      	   		<value>High-Resolution mode (R=75000)</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>SOPHIE</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>
+  	</options>
+  
+  <options name="instrumentReadOut">		
+    	   <option>
+      	   		<value>Fast</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>SOPHIE</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>       	      	   	
+    	   <option>
+      	   		<value>Medium</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>SOPHIE</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>       	      	   	
+  		<option>
+      	   		<value>Slow</value>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>SOPHIE</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+      	   </option>       	      	   	
+  		
+  </options>
+  
+  <options name="instrumentOrderFilter">	
+ 			<option>
+				<value>No filter</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   		
+			<option>
+				<value>GG375</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   		
+			<option>
+				<value>OG435</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   		
+			<option>
+				<value>OG590</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   		
+		</options>
+  
+  <options name="instrumentGrating">
+  			<option>
+				<value>150 1/mm (Blaze 5000A R=450)</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   
+			<option>
+				<value>150 1/mm (Blaze 8000A R=730)</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   
+			<option>
+				<value>300 1/mm (Blaze 5000A R=900)</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   
+			<option>
+				<value>600 1/mm (Blaze 5000A R=1800)</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   
+			<option>
+				<value>1200 1/mm (Blaze 4000A R=2900)</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   
+			<option>
+				<value>1200 1/mm (Blaze 7500A R=5400)</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>Carelec</value></select>
+					</or>
+				</dependencies>      	   
+			</option>       	   			
+  	</options>
+  
+  </configuration>

@@ -1,0 +1,189 @@
+<configuration telescope="CAHA35">
+	<options name="telescopeConfigurations">
+		<option>
+			<value>CAHA35</value>
+			<subfields>
+				<optionlist name="instrumentConfigurations"/>
+			</subfields>
+		</option>
+	</options>
+	<options name="instrumentConfigurations">
+		<option>
+			<value>OMEGA_2000</value>
+			<subfields>
+				<optionlist name="instrumentUrl" />
+				<optionlist name="telescopeScheduling"/>
+				<optionlist name="instrumentFilter"/>
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>CAHA35</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>PMAS</value>
+			<subfields>
+				<optionlist name="instrumentUrl" />
+				<optionlist name="telescopeScheduling"/>
+				<optionlist name="instrumentMode"/>
+				<optionlist name="instrumentGrating"/>
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>CAHA35</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>CARMENES</value>
+			<subfields>
+				<optionlist name="instrumentUrl" />
+				<optionlist name="telescopeScheduling"/>
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>CAHA35</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>Own Instrument</value>
+			<subfields>
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>CAHA35</value></select></or></dependencies>
+		</option>
+	</options>
+	<options name="instrumentUrl">
+		<option><value>http://www.caha.es/es/telescope-3-5m-2/omega-2000</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>http://www.caha.es/telescope-3-5m/pmas</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>http://www.caha.es/telescope-3-5m/carmenes</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>CARMENES</value></select></or></dependencies>
+		</option>
+	</options>
+	<options name="instrumentMode">
+		<option><value>Larr_IFU</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>PMAS</value></select>
+			</or></dependencies>
+		</option>
+		<option><value>PPAK</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>PMAS</value></select>
+			</or></dependencies>
+		</option>
+	</options>
+	<options name="instrumentFilter">
+		<option><value>z</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>Y</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>J</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>Js</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>Jlow</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>Jhigh</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>H</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>K</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>K'</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>Ks</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>MethOff</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>MethOn</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>BlockingzJ</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>BlockingHK</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>H2</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>Cont2.143</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+		<option><value>Br_g</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+	</options>
+	<options name="instrumentGrating">
+		<option><value>U1200</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>V1200</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>R1200</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>I1200</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>J1200</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>U600</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>V600</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>R600</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>V500</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option><value>V300</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+	</options>
+	<options name="telescopeScheduling">
+		<option>
+			<value>PMAS monitor</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>PMAS time critical</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>PMAS queue</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>PMAS</value></select></or></dependencies>
+		</option>
+
+		<option>
+			<value>CARMENES monitor</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>CARMENES</value></select></or></dependencies>
+		</option>
+
+		<option>
+			<value>CARMENES time critical</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>CARMENES</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>queue</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>CARMENES</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>OMEGA 2000 queue</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>OMEGA_2000</value></select></or></dependencies>
+		</option>
+	</options>
+</configuration>

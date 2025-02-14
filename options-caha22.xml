@@ -1,0 +1,195 @@
+<configuration telescope="CAHA22">
+  <options name="telescopeConfigurations">
+  <option>
+		<value>CAHA22</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+ </options>
+  
+  <options name="instrumentConfigurations">
+	<!--   CAHA2.2 TELESCOPE   -->
+        	<option>
+        		<value>CAFOS</value>
+        		<subfields>        		
+		       		<optionlist name="instrumentUrl"/>
+                                <optionlist name="telescopeScheduling"/>
+		       		<optionlist name="instrumentMode"/>
+		       		<optionlist name="instrumentFilter"/>
+		       		<optionlist name="instrumentGrism"/>
+		       		<optionlist name="instrumentPolarimetry"/>
+		       		<optionlist name="instrumentFPI"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>CAHA22</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	<option>
+        		<value>CAFE</value>
+        		<subfields>        		
+		       		<optionlist name="instrumentUrl"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>CAHA22</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	<option>
+        		<value>Astralux</value>
+        		<subfields>        		
+		       		<optionlist name="instrumentUrl"/>
+		       		<optionlist name="instrumentFilter"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>CAHA22</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+                <option>
+    	                <value>Own Instrument</value>
+    	                <subfields>
+       		           <text name="instrumentComments"/>
+    		        </subfields>
+       		        <dependencies><or><select name="telescopeConfigurations"><value>CAHA22</value></select></or></dependencies>
+                </option>
+
+	</options>
+	
+	 <options name="instrumentUrl">
+      	     <option>
+      	   	<value>http://www.caha.es/telescope-2-2m/cafos</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>      	   
+      	   </option>
+      	   <option>
+      	   	<value>http://www.caha.es/telescope-2-2m/cafe</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFE</value></select></or></dependencies>      	   
+      	   </option>
+      	   <option>
+      	   	<value>http://www.caha.es/telescope-2-2m/astralux</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>      	   
+      	   </option>
+
+	</options>
+
+	<options name="instrumentMode">	
+		<option><value>Direct_Imaging</value>
+                        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+                </option>
+		<option><value>Spectroscopy</value>
+                        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+                </option>
+		<option><value>Polarimetry</value>
+                        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+                </option>
+	</options>
+	
+	<options name="instrumentFilter">	
+		<option><value>Johnson U</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select>
+                                          <select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+      	        </option> 
+		<option><value>Johnson B</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select>
+                                          <select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+      	        </option> 
+		<option><value>Johnson V</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select>
+                                          <select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>	   
+      	        </option> 
+		<option><value>Johnson R</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select>
+             	                          <select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+      	        </option> 
+		<option><value>Johnson I</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select>
+        	                          <select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+      	        </option> 
+		<option><value>CAHA 50mm List</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>      	   
+      	        </option> 
+		<option><value>i' SDSS</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+		</option>
+		<option><value>z' SDSS</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+		</option>
+
+	</options>
+		
+	<options name="instrumentGrism">
+		<option><value>B-400</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+		<option><value>R-400</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+		<option><value>B-200</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+		<option><value>G-200</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+		<option><value>R-200</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+		<option><value>B-100</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+		<option><value>G-100</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+		<option><value>R-100</value>
+		        <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+		</option>
+	</options>
+<options name="telescopeScheduling">
+
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+        </option>
+	<option>
+            <value>Queue</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>CAFOS</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>CAFE</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>CAFE</value></select></or></dependencies>
+        </option>
+	<option>
+            <value>Queue</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>CAFE</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+        </option>
+	<option>
+            <value>Queue</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>Astralux</value></select></or></dependencies>
+        </option>
+
+</options>		
+</configuration>

@@ -1,0 +1,235 @@
+<configuration telescope="AAT">
+	<options name="telescopeConfigurations">
+		<option>
+			<value>AAT</value>
+			<subfields>
+				<optionlist name="instrumentConfigurations"/>
+			</subfields>
+		</option>
+	</options>
+	<options name="instrumentConfigurations">
+		<!-- Anglo-Australian Telescope -->
+		<option>
+			<value>2dF + AAOmega</value>
+			<subfields>
+				<optionlist name="instrumentUrl"/>
+				<optionlist name="instrumentGrating"/>
+				<optionlist name="instrumentMode"/>
+				<text name="instrumentWavelength"/>
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>AAT</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>2dF + HERMES</value>
+			<subfields>
+				<optionlist name="instrumentUrl"/>
+				<optionlist name="instrumentMode"/>
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>AAT</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>KOALA + AAOmega</value>
+			<subfields>
+				<optionlist name="instrumentUrl"/>
+				<optionlist name="instrumentGrating"/>
+				<optionlist name="instrumentMode"/>
+				<text name="instrumentWavelength"/>
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>AAT</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>Veloce</value>
+			<subfields>
+				<optionlist name="instrumentUrl"/>
+				<optionlist name="instrumentMode"/>
+				<text name="instrumentWavelength"/>				
+				<text name="instrumentComments"/>
+			</subfields>
+			<dependencies><or><select name="telescopeConfigurations"><value>AAT</value></select></or></dependencies>
+		</option>
+	</options>
+	<options name="instrumentUrl">
+		<option>
+			<value>https://aat.anu.edu.au/science/instruments/current/AAOmega</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>2dF + AAOmega</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>https://aat.anu.edu.au/science/instruments/current/HERMES</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>2dF + HERMES</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>https://aat.anu.edu.au/science/instruments/current/koala/overview</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select></or></dependencies>
+		</option>
+		<option>
+			<value>https://aat.anu.edu.au/science/instruments/current/veloce/overview</value>
+			<dependencies><or><select name="instrumentConfigurations"><value>Veloce</value></select></or></dependencies>
+		</option>
+	</options>
+	<options name="instrumentMode">
+		<option>
+			<value>570nm dichroic</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>670nm dichroic</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>blue arm only</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>red arm only</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>Normal-resolution (R~28,000)</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + HERMES</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>High-resolution (R~45,000)</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + HERMES</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>Normal</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>Veloce</value></select>
+				</or>
+			</dependencies>
+		</option>
+	</options>
+	<options name="instrumentGrating">
+		<option>
+			<value>580V</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>385R</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>1700B</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>1500V</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>1000R</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>1000I</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>3200B</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>2500V</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>2000R</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>1700I</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+		<option>
+			<value>1700D</value>
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>2dF + AAOmega</value></select>
+					<select name="instrumentConfigurations"><value>KOALA + AAOmega</value></select>
+				</or>
+			</dependencies>
+		</option>
+	</options>
+</configuration>

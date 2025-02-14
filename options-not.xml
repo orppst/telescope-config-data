@@ -1,0 +1,2324 @@
+<configuration telescope="NOT">
+<options name="telescopeConfigurations">
+	<option>
+		<value>NOT</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+
+
+ <!-- NOT TELESCOPE -->
+     	    <option>
+				<value>ALFOSC</value>
+				<subfields>
+                                        <optionlist name="telescopeScheduling" />
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentFilter" />
+					<text name="instrumentCustomFilter"/>
+					<optionlist name="instrumentMode" />
+					<boolean name="instrumentPolarimetry" />
+					<optionlist name="instrumentGrismw" />
+					<optionlist name="instrumentSlitw" />
+					<text name="instrumentComments"
+						required="false" />
+				</subfields>
+				<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>NOT</value></select>
+	        		</or>
+      	   		</dependencies>   
+			</option>
+			<option>
+				<value>NOTCAM</value>
+				<subfields>
+                                        <optionlist name="telescopeScheduling" />
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentFilter" />
+					<text name="instrumentCustomFilter"/>
+					<optionlist name="instrumentMode" />
+					<!-- <boolean name="instrumentPolarimetry" /> -->
+					<optionlist name="instrumentGrismw" />
+					<optionlist name="instrumentSlitw" />
+					<!-- <text name="instrumentFrameExposureTimeDetails" /> -->
+					<text name="instrumentComments"
+						required="false" />
+				</subfields>
+				<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>NOT</value></select>
+	        		</or>
+      	   		</dependencies>   
+			</option>
+			<option>
+				<value>FIES</value>
+				<subfields>
+                                        <optionlist name="telescopeScheduling" />
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentMode" />
+					<text name="instrumentComments"/>
+				</subfields>
+				<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>NOT</value></select>
+	        		</or>
+      	   		</dependencies>   
+			</option>
+			<option>
+				<value>MOSCA</value>
+				<subfields>
+                                        <optionlist name="telescopeScheduling" />
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentFilter" />
+					<text name="instrumentComments"/>
+				</subfields>
+				<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>NOT</value></select>
+	        		</or>
+      	   		</dependencies>   
+			</option>
+			<option>
+				<value>STANCAM</value>
+				<subfields>
+                                        <optionlist name="telescopeScheduling" />
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentFilter" />
+					<text name="instrumentComments"/>
+				</subfields>
+				<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>NOT</value></select>
+	        		</or>
+      	   		</dependencies>   
+			</option>
+			<option>
+				<value>DIPol-UF</value>
+				<subfields>
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentFilter" />
+					<optionlist name="instrumentMode" />
+					<text name="instrumentComments"/>
+				</subfields>
+				<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>NOT</value></select>
+	        		</or>
+      	   		</dependencies>   
+			</option>
+			<option>
+				<value>SOFIN</value>
+				<subfields>
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentMode" />
+					<text name="instrumentComments"/>
+				</subfields>
+				<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>NOT</value></select>
+	        		</or>
+      	   		</dependencies>   
+			</option>
+
+
+           </options>
+
+
+	   <options name="instrumentUrl">
+ 			<option>
+      	   	<value>http://www.not.iac.es/instruments/alfosc/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>ALFOSC</value></select></or></dependencies>      	   
+      	   </option> 
+ 	   		<option>
+      	   	<value>http://www.not.iac.es/instruments/notcam/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>NOTCAM</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.not.iac.es/instruments/fies/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>FIES</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.not.iac.es/instruments/mosaic/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>MOSCA</value></select></or></dependencies>      	   
+      	   </option>
+		    <option>
+      	   	<value>http://www.not.iac.es/instruments/stancam/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>STANCAM</value></select></or></dependencies>      	   
+      	   </option>
+		    <option>
+      	   	<value>http://www.not.iac.es/instruments/dipol-uf/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>DIPol-UF</value></select></or></dependencies>      	   
+      	   </option>
+		    <option>
+      	   	<value>http://www.not.iac.es/instruments/sofin/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>SOFIN</value></select></or></dependencies>      	   
+      	   </option>
+
+	   
+		</options>
+		
+		
+		<options name="instrumentFilter">
+
+			<option><value> BVR</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>DIPol-UF</value></select>
+			</or></dependencies></option>
+			
+			<option><value> 001 U_Bes 366_52</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 002 B_Bes 428_105</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 003 V_Bes 535_76</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 004 R_Bes 631_121</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 005 i_int 810_125</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 006 U_Bes 363_56</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 007 U_Bes 362_60</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 008 B_Bes 429_106</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 009 V_Bes 543_103</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 010 R_Bes 641_148</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 011 I_Bes 728_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 012 i_int 797_157</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 013 i_int 793_170</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 014 r_Gun 680_102</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 015 u_Str 351_34</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 016 v_Str 411_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 017 b_Str 467_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 018 y_Str 547_22</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 019 Hbet 485_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 020 Hbet 485_13</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 021 Halp 656_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 022 Halp 658_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 023 [SII] 403_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 024 407_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 025 [SII] 1020_10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 026 1033_10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 027 B_Bes 432_107</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 028 V 539_71</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 029 Halp 656_16</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 030 [OII] 373_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 031 [NeIII] 387_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 032 Hdel 410_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 033 Hgam 434_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 034 HeI 448_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 035 HeII 470_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 036 b_Str 472_20</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 037 Hbet 487_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 038 Hbet 489_10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 039 Hbet 487_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 040 [OIII] 501_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 041 506_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 042 511_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 043 515.9_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 044 y_Str 552_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 045 HeI 588_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 046 Eu 619_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 047 [OI] 631_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 048 635_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 049 661_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 050 665_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 051 670_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 052 [SII] 672_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 053 674_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 054 679_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 055 684_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 056 688_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 057 692_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 058 696_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 059 HeI 727_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 060 751_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 061 892_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 062 948_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 063 v_Str 412_19</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 064 Halp 656_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 065 504_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 066 510_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 067 521_10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 068 664_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 069 670_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 071 BG25-O 390_MP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 072 UG1 360_MP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 073 GG385 380_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 074 B_Bes 440_100</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 075 V_Bes 530_80</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 076 R_Bes 650_130</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 077 662_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 078 [NII] 658_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 079 HeII 469_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 080 NaD 589_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 081 [SIII] 953_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 082 u''_SDSS 350_65</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 083 g''_SDSS480_145</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 084 r''_SDSS625_140</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 085 i''_SDSS770_160</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 086 z''_SDSS 840_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 087 [OI] 630_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 088 [OII] 372_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 089 [NII] 575_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 090 [OIII] 501_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 091 [SII] 673_1</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 092 550_275</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 093 GG375 375_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 094 WG345 356_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 095 674_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 096 776_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 097 357_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 098 358_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 099 369_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 100 GG420 416_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 101 GG475 480_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 102 OG515 518_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 103 OG575 566_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 104 U_Bes 361_62</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 105 B_Bes 428_108</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 106 V_Bes 536_89</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 107 R_Bes 646_124</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 108 I_int 817_163</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 109 u''_SDSS 353_55</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 110 r''_SDSS 618_148</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 111 i''_SDSS 771_171</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 112 z''_SDSS 832_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 113 494_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 114 u_Str 347_38</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 115 v_Str 412_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 116 b_Str 468_19</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 117 y_Str 547_21</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 118 Hb_Str 485_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 119 Hb_Str 487_14</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 120 g''_SDSS 480_145</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 121 406_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 122 363_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 123 [SII] 672_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 124 Sort13 554_166</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 125 633_26</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 126 WG280 280_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 127 515.6_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 128 551_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 129 489_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 130 381_8</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+			
+			<option><value> 131 410_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value> 132 463_248</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value> 133 401_7</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value> 134 391_7</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value> 135 458_66</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value> 136 397_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value> 137 410_7</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value> 664 Diffuser</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+				<select name="instrumentConfigurations"><value>MOSCA</value></select> 
+			</or></dependencies></option>
+
+			<option><value>201 J (MKO)</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>203 H (MKO)</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>207 Ks</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>205 K'</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>208 K (MKO)</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>222 Yn 1028</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>213 He-IA  1079</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>214 Pa-gam 1094</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>215 J-cont 1207</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>216 Pa-bet 1287</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>211 H-cont 1570</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>223 CH4_s  1580</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>212 Fe-II  1644</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>224 CH4_l  1690</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>228 Barr   1690</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>217 He-IB  2059</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>230 H2-cnt 2087</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>218 H2-v10 2122</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>209 Br-gam 2163</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>219 He-IC  2189</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>220 H2-v21 2248</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>210 K-cont 2270</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>221 CO-2-0-bh</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>236 Y</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>237 Z</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+
+
+			
+
+			<option><value>001 U_Bes 366_52</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>002 B_Bes 428_105</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>003 V_Bes 535_76</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>004 R_Bes 631_121</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>005 i_int 810_125</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>006 U_Bes 363_56</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>007 U_Bes 362_60</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>008 B_Bes 429_106</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>009 V_Bes 543_103</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>010 R_Bes 641_148</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>011 I_Bes 728_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>012 i_int 797_157</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>013 i_int 793_170</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>014 r_Gun 680_102</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>015 u_Str 351_34</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>016 v_Str 411_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>017 b_Str 467_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>018 y_Str 547_22</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>019 Hbet 485_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>020 Hbet 485_13</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>021 Halp 656_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>022 Halp 658_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>023 [SII] 403_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>024 407_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>025 [SII] 1020_10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>026 1033_10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>027 B_Bes 432_107</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>028 V 539_71</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>029 Halp 656_16</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>030 [OII] 373_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>031 [NeIII] 387_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>032 Hdel 410_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>033 Hgam 434_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>034 HeI 448_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>035 HeII 470_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>036 b_Str 472_20</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>037 Hbet 487_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>038 Hbet 489_10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>039 Hbet 487_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>040 [OIII] 501_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>041 506_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>042 511_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>043 515.9_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>044 y_Str 552_18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>045 HeI 588_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>046 Eu 619_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>047 [OI] 631_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>048 635_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>049 661_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>050 665_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>051 670_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>052 [SII] 672_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>053 674_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>054 679_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>055 684_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>056 688_6</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>057 692_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>058 696_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>059 HeI 727_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>060 751_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>061 892_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>062 948_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>063 v_Str 412_19</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>064 Halp 656_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>074 B_Bes 440_100</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>075 V_Bes 530_80</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>076 R_Bes 650_130</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>077 662_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>078 [NII] 658_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>079 HeII 469_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>081 [SIII] 953_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>082 u''_SDSS 350_65</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>083 g''_SDSS480_145</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>084 r''_SDSS625_140</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>085 i''_SDSS770_160</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>086 z''_SDSS 840_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>087 [OI] 630_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>088 [OII] 372_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>089 [NII] 575_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>090 [OIII] 501_3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>091 [SII] 673_1</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>092 550_275</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>093 GG375 375_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>094 WG345 356_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>095 674_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>096 776_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>097 357_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>098 358_2</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>099 369_4</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>100 GG420 416_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>101 GG475 480_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>102 OG515 518_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>103 OG575 566_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>113 494_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>123 [SII] 672_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>124 Sort13 554_166</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>126 WG280 280_LP</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+			
+			<option><value>129 489_5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>STANCAM</value></select>
+			</or></dependencies></option>
+
+		</options>
+		
+		
+		
+		<options name="instrumentGrismw">
+			 <option><value>Grism #03 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #04 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #05 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #06 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #07 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #08 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #09 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #10 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #11 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #12 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #13 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #14 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #15 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #16 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #17 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #18 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>Grism #19 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>Grism #20 Horizontal</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>Grism #03</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #04</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #05</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #06</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #07</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #08</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #09</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #10</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #11</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #12</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #13</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #14</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #15</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Grism #16</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>Grism #18</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>Grism #19</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>Grism #20</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>WeDoWo</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+						
+		</options>	
+		
+		<options name="instrumentGrismw">
+			<option><value>Grism-#1</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+		</options>
+		
+		<options name="instrumentSlitw">
+			<option><value>Ech_0.7"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Ech_0.8"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Ech_1.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Ech_1.2"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Ech_1.6"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Ech_1.8"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Ech_2.2"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Pol_1.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Pol_1.4"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Pol_1.8"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_0.4"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_0.5"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_0.75"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_1.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_1.3"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_1.8"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_2.5"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_5.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_10.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Slit_40.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>Slitholder_40.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+
+			<option><value>VertOff_0.5</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_0.8</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.0</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.3</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.9</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_8.8</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_0.5b</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_0.5r</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_0.8b</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_0.8r</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.0b</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.0r</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.3b</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.3r</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.9b</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_1.9r</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_8.8b</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>VertOff_8.8r</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Vert_0.5"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Vert_0.75"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Vert_0.9"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Vert_1.3"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Vert_1.8"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>Vert_10.0"</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>44mu  HR slit 0.2""</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+			
+			<option><value>128mu WF slit 0.6""</value>
+			<dependencies><or>
+				<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+			</or></dependencies>
+			</option>
+
+	</options>
+	
+	<options name="instrumentMode">
+				<option>
+					<value>imaging</value><dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+						<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+					</or>
+				</dependencies>   
+				</option>
+				<option>
+					<value>spectroscopy</value><dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+						<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+					</or>
+				</dependencies>   
+				</option>
+				<option>
+					<value>imaging+spectroscopy</value><dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>ALFOSC</value></select>
+						<select name="instrumentConfigurations"><value>NOTCAM</value></select>
+					</or>
+				</dependencies>   
+				</option>
+	
+				<option>
+					<value>Linear polarimetry</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DIPol-UF</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+
+				
+				<option>
+					<value>Circular polarimetry</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DIPol-UF</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+
+				
+				<option>
+					<value>Direct imaging</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DIPol-UF</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+
+				
+				<option>
+					<value>Med-Res Circular Spectro-Polarimetry</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>SOFIN</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+
+				
+				<option>
+					<value>Low-Res Fiber</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>FIES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>Med-Res Fiber</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>FIES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>High-Res Fiber</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>FIES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+	</options>
+<options name="telescopeScheduling">
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ALFOSC</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ALFOSC</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ALFOSC</value></select></or></dependencies>
+        </option>
+ <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>NOTCAM</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>NOTCAM</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>NOTCAM</value></select></or></dependencies>
+        </option>
+ <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>FIES</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>FIES</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>FIES</value></select></or></dependencies>
+        </option>
+ <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MOSCA</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MOSCA</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MOSCA</value></select></or></dependencies>
+        </option>
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>STANCAM</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>STANCAM</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>STANCAM</value></select></or></dependencies>
+        </option>
+
+</options>
+</configuration>
+

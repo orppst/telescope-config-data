@@ -1,0 +1,49 @@
+<configuration telescope="TBL">
+  <options name="telescopeConfigurations">
+	<option>
+		<value>TBL</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+		<!--  TBL Telescope -->
+			<option>
+        		<value>Neo-Narval</value>
+        		<subfields>
+        			<optionlist name="instrumentUrl" />
+	        		<optionlist name="instrumentMode"/>
+	        		<text name="instrumentComments"/>
+	        	</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TBL</value></select>
+	        		</or>
+      	   		</dependencies>	   
+        	</option>
+        	
+		
+	</options>
+	
+	<options name="instrumentUrl">
+	    <option>
+      	   	<value>https://tbl.omp.eu/observing-with-the-telescope-bernard-lyot-tbl/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>Neo-Narval</value></select></or></dependencies>      	 
+        </option>
+	</options>
+	
+    <options name="instrumentMode">
+	    <option>
+      	    <value>POL3 (polarimetry R=65000)</value>
+     	   		<dependencies>
+	        		<or>
+	        			<select name="instrumentConfigurations"><value>Neo-Narval</value></select>
+	        		</or>
+      	   		</dependencies>      	  
+        </option>       	      	        	      	   
+	
+	</options> 
+	
+</configuration>

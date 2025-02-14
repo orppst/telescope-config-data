@@ -1,0 +1,377 @@
+<configuration telescope="LCO">
+  <options name="telescopeConfigurations">
+      <option>
+        <value>LCO</value>
+        <subfields>
+            <optionlist name="instrumentConfigurations"/>
+        </subfields>
+    </option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+<!--   LCO TELESCOPE   -->
+            <option>
+                <value>1m Imaging (Sinistro)</value>
+                <subfields>                
+                    <optionlist name="instrumentUrl" />
+                    <optionlist name="telescopeMode" />
+                       <optionlist name="instrumentFilter"/>
+	       		<optionlist name="telescopeScheduling" />
+	       		<boolean name="telescopeHours" />
+                       <text name="instrumentComments"/>
+                   </subfields>
+                     <dependencies>
+                    <or>
+                        <select name="telescopeConfigurations"><value>LCO</value></select>
+                    </or>
+                     </dependencies>             
+            </option>
+<!-- 2m not offered in 2021a
+            <option>
+                <value>2m Imaging (Spectral)</value>
+                <subfields>                
+                    <optionlist name="instrumentUrl" />
+                    <optionlist name="telescopeMode" />
+                     <optionlist name="instrumentFilter"/>
+	       	    <optionlist name="telescopeScheduling" />
+	       	    <boolean name="telescopeHours" />
+                     <text name="instrumentComments"/>
+                   </subfields>
+                     <dependencies>
+                    <or><select name="telescopeConfigurations"><value>LCO</value></select>
+                    </or>
+                     </dependencies>             
+            </option>
+-->
+            <option>
+                <value>0.4m Imaging (SBIG)</value>
+                <subfields>                
+                    <optionlist name="instrumentUrl" />
+                    <optionlist name="telescopeMode" />
+                       <optionlist name="instrumentFilter"/>
+	       		<optionlist name="telescopeScheduling" />
+	       		<boolean name="telescopeHours" />
+                       <text name="instrumentComments"/>
+                   </subfields>
+                     <dependencies>
+                    <or>
+                        <select name="telescopeConfigurations"><value>LCO</value></select>
+                    </or>
+                     </dependencies>             
+            </option>
+<!-- 2m not offered in 2021a
+            <option>
+                <value>2m Spectroscopy (Floyds)</value>
+                <subfields>                
+                    <optionlist name="instrumentUrl" />
+                    <optionlist name="telescopeMode" />
+	       	    <optionlist name="telescopeScheduling" />
+	       		<boolean name="telescopeHours" />
+                   <text name="instrumentComments"/>
+                   </subfields>
+                     <dependencies>
+                    <or><select name="telescopeConfigurations"><value>LCO</value></select>
+                    </or>
+                     </dependencies>             
+            </option>
+-->
+            <option>
+                <value>1m NRES Network of Robotic Echelle Spectrographs</value>
+                <subfields>                
+                    <optionlist name="instrumentUrl" />
+                    <optionlist name="telescopeMode" />
+	       	    <optionlist name="telescopeScheduling" />
+	       		<boolean name="telescopeHours" />
+                   <text name="instrumentComments"/>
+                   </subfields>
+                     <dependencies>
+                    <or><select name="telescopeConfigurations"><value>LCO</value></select>
+                    </or>
+                     </dependencies>             
+            </option>
+  </options>
+  
+  <options name="instrumentUrl">
+             <option>
+                 <value> https://lco.global/observatory/instruments/sinistro/</value>
+                     <dependencies>
+                        <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select></or>
+                     </dependencies>             
+             </option>
+<!-- 2m not offered in 2021a
+             <option>
+                 <value> https://lco.global/observatory/instruments/spectral/</value>
+                     <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select></or>
+                     </dependencies>             
+             </option>
+-->
+             <option>
+                 <value> https://lco.global/observatory/instruments/sbig-stl-6303/</value>
+                     <dependencies>
+                        <or><select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select></or>
+                     </dependencies>             
+             </option>
+<!-- 2m not offered in 2021a
+             <option>
+                 <value> https://lco.global/observatory/instruments/floyds/</value>
+                     <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Spectroscopy (Floyds)</value></select></or>
+                     </dependencies>             
+             </option>
+-->
+             <option>
+                 <value> https://lco.global/observatory/instruments/nres/</value>
+                     <dependencies>
+                        <or><select name="instrumentConfigurations"><value>1m NRES Network of Robotic Echelle Spectrographs</value></select></or>
+                     </dependencies>             
+             </option>
+
+        </options>
+        
+ <options name="instrumentFilter">
+                <option>
+                <value>Bessel U</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        
+                    </or>
+                </dependencies>             
+            </option>      
+            <option>
+                <value>Bessel B</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        <select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select>
+                    </or>
+                </dependencies>             
+            </option>  
+    
+            <option>
+                <value>Bessel V</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        <select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select>
+                   </or>
+                </dependencies>
+            </option>
+            
+            <option>
+                <value>Bessel R</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                            <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+
+
+            <option>
+                <value>Bessel I</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                            <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+
+
+            <option>
+                <value>SDSS u</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        <select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select>
+                    </or>
+                </dependencies>
+            </option>
+
+            <option>
+                <value>SDSS g</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        <select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select>
+                    </or>
+                </dependencies>
+            </option>
+
+
+            <option>
+                <value>SDSS r</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        <select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select>
+                    </or>
+                </dependencies>
+            </option>
+
+            <option>
+                <value>SDSS i</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        <select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select>
+                    </or>
+                </dependencies>
+            </option>
+
+            <option>
+                <value>Pan-STARRS Z</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                            <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+
+            <option>
+                <value>Pan-STARRS w</value>
+                <dependencies>
+                    <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                        <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        <select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select>
+                    </or>
+                </dependencies>
+            </option>
+
+
+            <option>
+                <value>Pan-STARRS Y</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>1m Imaging (Sinistro)</value></select>
+                            <select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+<!-- 2m not offered in 2021a
+            <option>
+                <value>Astrodon UV</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+            <option>
+                <value>Skymapper v</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+            <option>
+                <value>Halpha</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+            <option>
+                <value>Hbeta</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+            <option>
+                <value>OIII</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+            <option>
+                <value>D51</value>
+                <dependencies>
+                        <or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select>
+                        </or>
+                </dependencies>
+            </option>
+-->
+    </options>
+<options name="telescopeScheduling">
+        <option>
+            <value>Monitor</value>
+            <dependencies>
+              <or><select name="instrumentConfigurations">
+              <value>1m Imaging (Sinistro)</value>
+             </select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations">
+               <value>1m Imaging (Sinistro)</value>
+            </select></or></dependencies>
+        </option>
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations">
+               <value>1m Imaging (Sinistro)</value>
+            </select></or></dependencies>
+        </option>
+<!-- 2m not offered in 2021a
+	<option>
+            <value>Monitor</value>
+            	<dependencies>
+		<or>	<select name="instrumentConfigurations"> 
+			<value>2m Imaging (Spectral)</value>
+			</select>
+		</or>
+		</dependencies>
+        </option>
+        <option>
+	    <value>Time Critical</value>
+		<dependencies>
+		<or>	<select name="instrumentConfigurations">
+			<value>2m Imaging (Spectral)</value>
+			</select>
+		</or>
+		</dependencies>
+        </option>
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>2m Imaging (Spectral)</value></select></or></dependencies>
+        </option>
+-->
+	<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>0.4m Imaging (SBIG)</value></select></or></dependencies>
+        </option>
+<!-- 2m not offered in 2021a
+	<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>2m Spectroscopy (Floyds)</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>2m Spectroscopy (Floyds)</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>2m Spectroscopy (Floyds)</value></select></or></dependencies>
+        </option>
+-->
+	<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>1m NRES Network of Robotic Echelle Spectrographs</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>1m NRES Network of Robotic Echelle Spectrographs</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>1m NRES Network of Robotic Echelle Spectrographs</value></select></or></dependencies>
+        </option>
+
+</options>
+
+
+</configuration>

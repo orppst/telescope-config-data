@@ -1,0 +1,567 @@
+<configuration telescope="CFHT">
+<options name="telescopeConfigurations">
+	<option>
+		<value>CFHT</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations" />
+		</subfields>
+	</option>
+</options>
+<options name="instrumentConfigurations">
+	<option>
+		<value>MegaCam</value>
+		<subfields>
+                <optionlist name="telescopeMode" />
+                <optionlist name="telescopeScheduling" />
+			<text name="instrumentComments" />
+                	<optionlist name="instrumentFilter" />
+		</subfields>
+		<dependencies>
+			<or>
+				<select name="telescopeConfigurations">
+					<value>CFHT</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>WIRCam</value>
+		<subfields>
+                <optionlist name="telescopeMode" />
+                <optionlist name="telescopeScheduling" />
+                <text name="instrumentComments" />
+                <optionlist name="instrumentFilter" />
+		</subfields>
+		<dependencies>
+			<or>
+				<select name="telescopeConfigurations">
+					<value>CFHT</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>SITELLE</value>
+		<subfields>
+                <optionlist name="telescopeMode" />
+                <optionlist name="telescopeScheduling" />
+			<optionlist name="instrumentFilter" />
+			<text name="instrumentComments" />
+		</subfields>
+		<dependencies>
+			<or>
+				<select name="telescopeConfigurations">
+					<value>CFHT</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>ESPaDOnS</value>
+		<subfields>
+                <optionlist name="telescopeMode" />
+                <optionlist name="telescopeScheduling" />
+			<optionlist name="instrumentMode" />
+			<optionlist name="instrumentReadOut" />
+			<text name="instrumentComments" />
+		</subfields>
+		<dependencies>
+			<or>
+				<select name="telescopeConfigurations">
+					<value>CFHT</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>SPIRou</value>
+		<subfields>
+                <optionlist name="telescopeMode" />
+                <optionlist name="telescopeScheduling" />
+			<optionlist name="instrumentMode" />
+			<text name="instrumentComments" />
+		</subfields>
+		<dependencies>
+			<or>
+				<select name="telescopeConfigurations">
+					<value>CFHT</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+</options>
+
+
+<options name="instrumentMode">
+	<option>
+		<value>Polarimetry</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>ESPaDOnS</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Spectroscopy: Star only</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>ESPaDOnS</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Spectroscopy: Star + sky</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>ESPaDOnS</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Polarimetry</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SPIRou</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Spectroscopy</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SPIRou</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+</options>
+
+<options name="instrumentReadOut">
+	<option>
+		<value>Fast</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>ESPaDOnS</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Normal</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>ESPaDOnS</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Slow</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>ESPaDOnS</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+</options>
+
+<options name="instrumentFilter">
+	<option>
+		<value>CA H K</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Ha</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>HaOFF</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>OIII</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>OIII OFF</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>g</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>i</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>r</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>u</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>z</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Custom</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>MegaCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>W</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>CO</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>BrG</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>CH4-Off</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>CH4-On</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>H</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>H2(1-0)</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>J</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>K Continuum</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Ks</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>LowOH1</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>LowOH2</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Y</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Custom</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>WIRCam</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>C1</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>C2</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>C3</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>C4</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>SN1</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>SN2</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>SN3</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+	<option>
+		<value>Custom</value>
+		<dependencies>
+			<or>
+				<select name="instrumentConfigurations">
+					<value>SITELLE</value>
+				</select>
+			</or>
+		</dependencies>
+	</option>
+</options>
+<options name="telescopeScheduling">
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MegaCam</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MegaCam</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>MegaCam</value></select></or></dependencies>
+        </option>
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>WIRCam</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>WIRCam</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>WIRCam</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>SITELLE</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>SITELLE</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>SITELLE</value></select></or></dependencies>
+        </option>
+<option>
+            <value>Monitor</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ESPaDOnS</value></select></or></dependencies>
+        </option>
+        <option>
+            <value>Time Critical</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ESPaDOnS</value></select></or></dependencies>
+        </option>
+
+        <option>
+            <value>Override</value>
+            <dependencies><or><select name="instrumentConfigurations"><value>ESPaDOnS</value></select></or></dependencies>
+        </option>
+</options>
+</configuration>

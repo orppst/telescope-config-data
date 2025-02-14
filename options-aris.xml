@@ -1,0 +1,306 @@
+<configuration telescope="Aristarchos">
+  <options name="telescopeConfigurations">
+  	<option>
+		<value>Aristarchos</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+<!--   Aristarchos TELESCOPE   -->
+
+        	<option>
+        		<value>RISE2</value>
+        		<subfields>        		
+        			<optionlist name="instrumentUrl" />
+		       		<optionlist name="instrumentFilter"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>Aristarchos</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+
+        	<option>
+        		<value>LN CCD</value>
+        		<subfields>        		
+        			<optionlist name="instrumentUrl" />
+		       		<optionlist name="instrumentFilter"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>Aristarchos</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+<!-- Options not used at present
+		<option>
+        		<value>ATS</value>
+        		<subfields>        		
+		       		<optionlist name="instrumentGrism"/>
+		       		<optionlist name="instrumentUrl" />
+		       		<optionlist name="instrumentFilter"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>Aristarchos</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	<option>
+        		<value>MES-AT</value>
+        		<subfields>        		
+		       		<optionlist name="instrumentGrism"/>
+		       		<optionlist name="instrumentUrl" />
+		       		<optionlist name="instrumentFilter"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>Aristarchos</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	<option>
+        		<value>VEC</value>
+        		<subfields>        		
+		       		<optionlist name="instrumentGrism"/>
+		       		<optionlist name="instrumentUrl" />
+		       		<optionlist name="instrumentFilter"/>
+		       		<text name="instrumentComments"/>
+	       		</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>Aristarchos</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+-->
+  </options>
+  
+  <options name="instrumentUrl">
+     	    <option>
+      	   	<value>http://helmos.astro.noa.gr/lnccd.html</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>LN CCD</value></select></or></dependencies>      	   
+      	   </option>
+<!-- Options not avilable at present
+      	    <option>
+      	   	<value>http://www.astro.noa.gr/helmos/ats.html</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>ATS</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.astro.noa.gr/helmos/mesat.html</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>MES-AT</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.astro.noa.gr/helmos/vec.html</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>VEC</value></select></or></dependencies>      	   
+      	   </option>
+-->
+        </options>
+        
+ <options name="instrumentFilter">	
+			<option>
+				<value>Johnson-Cousins B</value>
+				<dependencies>
+					<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>      	   
+			</option>  
+	
+			<option>
+				<value>Johnson-Cousins V</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+			
+			<option>
+				<value>Johnson-Cousins R</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>Johnson-Cousins I</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>Stromgren u</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>Stromgren b</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>Stromgren v</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>Stromgren y</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>Stromgren z</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>[O II] 3726+ [OII] 3729</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+
+			<option>
+				<value>He II 4686</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>Hbeta 4861</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>[O III] 5011</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>[O III] 5035</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>[O III] 5100</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>[O III] 5200</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>[O I] 6300</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>Halpha 6563</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>Halpha 6563+[NII] 6583</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>[N II] 6583</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+
+			<option>
+				<value>[S II] 6717+6731</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>Continum Blue</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+			<option>
+				<value>Continum Red</value>
+				<dependencies>
+						<or><select name="instrumentConfigurations"><value>LN CCD</value></select></or>
+				</dependencies>
+			</option>
+
+ 
+
+
+
+  </options>
+  
+  <options name="instrumentUrl">
+     	    <option>
+      	   	<value>http://helmos.astro.noa.gr/rise2.html</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>RISE2</value></select></or></dependencies>      	   
+      	   </option>
+
+        </options>
+        
+ <options name="instrumentFilter">	
+			<option>
+				<value>Broad-band VR</value>
+				<dependencies>
+					<or><select name="instrumentConfigurations"><value>RISE2</value></select></or>
+				</dependencies>      	   
+			</option>  
+	
+	</options>
+  
+</configuration>

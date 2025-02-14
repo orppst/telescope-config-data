@@ -1,0 +1,645 @@
+<configuration telescope="TNG">
+  <options name="telescopeConfigurations">
+	<option>
+		<value>TNG</value>
+		<subfields>
+			<optionlist name="instrumentConfigurations"/>
+		</subfields>
+	</option>
+  </options>
+  
+  <options name="instrumentConfigurations">
+			<!-- TNG TELESCOPE -->
+        	 <option>
+        		<value>DOLORES</value>
+                                 <subfields>
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentFilter" />
+					<text name="instrumentCustomFilter"/>
+					<optionlist name="instrumentMode" />
+					<optionlist name="instrumentGrismw" />
+					<optionlist name="instrumentSlitw" />
+                                	<text name="instrumentComments" 
+					      required="false"/>
+				</subfields>
+
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TNG</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	 <option>
+        		<value>NICS</value>
+                               <subfields>
+					<optionlist name="instrumentUrl" />
+					<optionlist name="instrumentFilter" />
+					<optionlist name="instrumentMode" />
+					<optionlist name="instrumentGrismw" />
+					<optionlist name="instrumentSlitw" />
+    					<boolean name="instrumentPolarimetry" />
+					<text name="instrumentComments" 
+					      required="false"/>
+				</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TNG</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	 <option>
+        		<value>HARPS-N</value>
+            <subfields>
+					<optionlist name="instrumentUrl" />
+                                	<text name="instrumentComments" 
+					      required="false"/>
+				</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TNG</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+        	       	 <option>
+        		<value>GIANO-B</value>
+           <subfields>
+					<optionlist name="instrumentUrl" />
+                                	<text name="instrumentComments" 
+					      required="false"/>
+				</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TNG</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+     	       	 <option>
+        		<value>GIARPS</value>
+           <subfields>
+					<optionlist name="instrumentUrl" />
+                                	<text name="instrumentComments" 
+					      required="false"/>
+				</subfields>
+      	   		<dependencies>
+	        		<or>
+	        			<select name="telescopeConfigurations"><value>TNG</value></select>
+	        		</or>
+      	   		</dependencies>      	   
+        	</option>
+		</options>
+
+	        <options name="instrumentUrl">
+	<option>
+      	   	<value>http://www.tng.iac.es/instruments/lrs/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>DOLORES</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.tng.iac.es/instruments/nics/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>NICS</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.tng.iac.es/instruments/harps/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>HARPS-N</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.tng.iac.es/instruments/giano-b/</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>GIANO-B</value></select></or></dependencies>      	   
+      	   </option>
+      	    <option>
+      	   	<value>http://www.tng.iac.es/instruments/giano-b/#giarps</value>
+      	   		<dependencies><or><select name="instrumentConfigurations"><value>GIARPS</value></select></or></dependencies>      	   
+      	   </option>
+
+
+
+	</options>
+
+	<options name="instrumentMode">
+        	         	<option>
+					<value>Imaging</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DOLORES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				
+				<option>
+					<value>Spectroscopy</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DOLORES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>Imaging + Spectroscopy</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DOLORES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>Multi-Object Spectroscopy</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DOLORES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>Spectroscopy + Multi-Object Spectroscopy</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>DOLORES</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				
+				<option>
+					<value>Imaging</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>NICS</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>Spectroscopy</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>NICS</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+				<option>
+					<value>Imaging+Spectroscopy</value>
+					<dependencies>
+						<or>
+							<select name="instrumentConfigurations">
+								<value>NICS</value>
+							</select>
+						</or>
+					</dependencies>
+				</option>
+	
+	</options>
+	
+	<options name="instrumentGrismw">
+	
+	
+	        <option>
+                                <value>LR-B</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>LR-R</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>V390</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>V486</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>V510</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>V589</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>V656</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>V860</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>VHRV</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>VHRR</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>VHRI</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>
+		        <option>
+                                <value>GRIS-U</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+		        <option>
+                                <value>Amici</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+                                <value>IJ</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+                        <option>        
+			        <value>JH</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+                                <value>JK'</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>
+			<option>
+                                <value>HK</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+                                <value>1mic</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option> 
+			<option>
+                                <value>Js</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option> 
+			<option>
+                                <value>J</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option> 
+			<option>
+                                <value>H</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option> 
+			<option>
+                                <value>KB</value>       
+			<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+	</options>
+	<options name="instrumentSlitw">
+
+			<option>
+				<value>0.7 arcsec </value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>1.0 arcsec</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+                                        <select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>1.5 arcsec</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>2.0 arcsec</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>10.0 arcsec</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>1.1 MOS slitlets</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>DOLORES</value></select>
+					</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>1.6 MOS slitlets</value>
+				<dependencies>
+					<or>
+						<select name="instrumentConfigurations"><value>DOLORES</value></select>
+					</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>0.5 arcsec</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+			<option>
+				<value>0.75 arcsec</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>1.5 arcsec</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+        </options>
+        <options  name="instrumentFilter">
+ 			<option>
+				<value>1mic</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>Js</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>J</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>H</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>K'</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>K</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>CH4s</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>CH4l</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>Brg</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>H2</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>Kcont</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>FeII</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>   			<option>
+				<value>Hcont</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>NICS</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>U</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>B</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>V</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>R</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>I</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>u' SDSS</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>g' SDSS</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>r' SDSS</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>i' SDSS</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+ 			<option>
+				<value>z' SDSS</value>
+				<dependencies>
+				<or>
+					<select name="instrumentConfigurations"><value>DOLORES</value></select>
+				</or>
+				</dependencies>   
+			</option>  
+
+</options>
+
+</configuration>        	
