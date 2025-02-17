@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://www.radionet-eu.org/NorthStarOptions"
+	xmlns="http://www.radionet-eu.org/NorthStarOptions"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.0">
+	<xsd:annotation>
+		<xsd:documentation>
+			Definition of the Northstar options configuration file
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:complexType name="FieldType" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="label" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="description" type="xsd:string"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="visibility" minOccurs="0"
+				type="VisibilityType">
+			</xsd:element>
+			<xsd:element name="validation" type="ValidationType"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="default" minOccurs="0"
+				type="DefaultType">
+			</xsd:element>
+			<xsd:element name="content" type="ContentType"
+				minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="required" type="xsd:boolean"
+			default="true">
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="OptionListType">
+		<xsd:complexContent>
+			<xsd:restriction base="FieldType">
+				<xsd:sequence>
+					<xsd:element name="label" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="description" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="visibility" minOccurs="0"
+						type="VisibilityType">
+					</xsd:element>
+					<xsd:element name="validation" type="ValidationType"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="default" minOccurs="0"
+						type="DefaultType">
+					</xsd:element>
+					<xsd:element name="content"
+						type="OptionListContentType" minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="xsd:string"
+					use="required">
+				</xsd:attribute>
+				<xsd:attribute name="type" type="xsd:string"
+					fixed="optionlist">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BooleanType">
+		<xsd:complexContent>
+			<xsd:restriction base="FieldType">
+				<xsd:sequence>
+					<xsd:element name="label" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="description" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="visibility" minOccurs="0"
+						type="VisibilityType">
+					</xsd:element>
+					<xsd:element name="validation" type="ValidationType"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="default" minOccurs="0"
+						type="DefaultType">
+					</xsd:element>
+					<xsd:element name="content"
+						type="IntegerContentType" minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="xsd:string"
+					use="required">
+				</xsd:attribute>
+				<xsd:attribute name="type" type="xsd:string"
+					fixed="integer">
+				</xsd:attribute>
+				<xsd:attribute name="required" type="xsd:boolean"
+					default="true">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IntegerType">
+		<xsd:complexContent>
+			<xsd:restriction base="FieldType">
+				<xsd:sequence>
+					<xsd:element name="label" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="description" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="visibility" minOccurs="0"
+						type="VisibilityType">
+					</xsd:element>
+					<xsd:element name="validation" type="ValidationType"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="default" minOccurs="0"
+						type="DefaultType">
+					</xsd:element>
+					<xsd:element name="content"
+						type="IntegerContentType" minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="xsd:string"
+					use="required">
+				</xsd:attribute>
+				<xsd:attribute name="type" type="xsd:string"
+					fixed="integer">
+				</xsd:attribute>
+				<xsd:attribute name="required" type="xsd:boolean"
+					default="true">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="DoubleType">
+		<xsd:complexContent>
+			<xsd:restriction base="FieldType">
+				<xsd:sequence>
+					<xsd:element name="label" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="description" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="visibility" minOccurs="0"
+						type="VisibilityType">
+					</xsd:element>
+					<xsd:element name="validation" type="ValidationType"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="default" minOccurs="0"
+						type="DefaultType">
+					</xsd:element>
+					<xsd:element name="content" type="DoubleContentType"
+						minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="xsd:string"
+					use="required">
+				</xsd:attribute>
+				<xsd:attribute name="type" type="xsd:string"
+					fixed="double">
+				</xsd:attribute>
+				<xsd:attribute name="required" type="xsd:boolean"
+					default="true">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="StringType">
+		<xsd:complexContent>
+			<xsd:restriction base="FieldType">
+				<xsd:sequence>
+					<xsd:element name="label" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="description" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="visibility" minOccurs="0"
+						type="VisibilityType">
+					</xsd:element>
+					<xsd:element name="validation" type="ValidationType"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="default" minOccurs="0"
+						type="DefaultType">
+					</xsd:element>
+					<xsd:element name="content" type="StringContentType"
+						minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="xsd:string"
+					use="required">
+				</xsd:attribute>
+				<xsd:attribute name="type" type="xsd:string"
+					fixed="string">
+				</xsd:attribute>
+				<xsd:attribute name="required" type="xsd:boolean"
+					default="true">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="TextType">
+		<xsd:complexContent>
+			<xsd:restriction base="FieldType">
+				<xsd:sequence>
+					<xsd:element name="label" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="description" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="visibility" minOccurs="0"
+						type="VisibilityType">
+					</xsd:element>
+					<xsd:element name="validation" type="ValidationType"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="default" minOccurs="0"
+						type="DefaultType">
+					</xsd:element>
+					<xsd:element name="content" type="TextContentType"
+						minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="xsd:string"
+					use="required">
+				</xsd:attribute>
+				<xsd:attribute name="type" type="xsd:string"
+					fixed="text">
+				</xsd:attribute>
+				<xsd:attribute name="required" type="xsd:boolean"
+					default="true">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ValidationType">
+		<xsd:sequence>
+			<xsd:element name="format" type="xsd:string"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="lowerBoundary" type="xsd:anySimpleType"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="upperBoundary" type="xsd:anySimpleType"
+				minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="xsd:string" default="error"></xsd:attribute>
+		<xsd:attribute name="configurable" type="xsd:boolean"
+			default="false">
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="FieldsDefinitionType">
+		<xsd:sequence>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="boolean" type="BooleanType">
+				</xsd:element>
+				<xsd:element name="integer" type="IntegerType">
+				</xsd:element>
+				<xsd:element name="double" type="DoubleType">
+				</xsd:element>
+				<xsd:element name="string" type="StringType">
+				</xsd:element>
+				<xsd:element name="text" type="StringType">
+				</xsd:element>
+				<xsd:element name="optionlist" type="OptionListType">
+				</xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ConfigurationType">
+		<xsd:sequence>
+			<xsd:element name="options" maxOccurs="unbounded"
+				minOccurs="0" type="OptionsConfigurationType">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DependenciesType">
+		<xsd:sequence minOccurs="0" maxOccurs="1">
+			<xsd:choice>
+				<xsd:element name="or" type="AndOrType"></xsd:element>
+				<xsd:element name="and" type="AndOrType"></xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AndOrType">
+		<xsd:sequence>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="or" type="AndOrType"></xsd:element>
+				<xsd:element name="and" type="AndOrType"></xsd:element>
+				<xsd:element name="select" type="SelectType"></xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SelectType">
+		<xsd:sequence>
+			<xsd:element name="value" type="xsd:string" minOccurs="0"
+				maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="ContextType">
+		<xsd:sequence>
+			<xsd:element name="fields" minOccurs="0"
+				type="FieldsDefinitionType">
+
+			</xsd:element>
+			<xsd:element name="configuration" type="ConfigurationType"
+				minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="category" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="ContentType" abstract="true">
+		<xsd:sequence>
+			<xsd:any minOccurs="0" maxOccurs="unbounded"></xsd:any>
+		</xsd:sequence>
+		<xsd:attribute name="configurable" type="xsd:boolean"
+			default="true">
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="OptionListContentType">
+		<xsd:complexContent>
+			<xsd:restriction base="ContentType">
+				<xsd:sequence>
+					<xsd:element name="option" type="xsd:string"
+						minOccurs="0" maxOccurs="unbounded">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BooleanContentType">
+		<xsd:complexContent>
+			<xsd:restriction base="ContentType">
+				<xsd:sequence>
+					<xsd:element name="value" type="xsd:boolean"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IntegerContentType">
+		<xsd:complexContent>
+			<xsd:restriction base="ContentType">
+				<xsd:sequence>
+					<xsd:element name="value" type="xsd:integer"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="DoubleContentType">
+		<xsd:complexContent>
+			<xsd:restriction base="ContentType">
+				<xsd:sequence>
+					<xsd:element name="value" type="xsd:double"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="StringContentType">
+		<xsd:complexContent>
+			<xsd:restriction base="ContentType">
+				<xsd:sequence>
+					<xsd:element name="value" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="TextContentType">
+		<xsd:complexContent>
+			<xsd:restriction base="ContentType">
+				<xsd:sequence>
+					<xsd:element name="value" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="contexts">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="context" type="ContextType"
+					minOccurs="0" maxOccurs="unbounded">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="OptionsConfigurationType">
+		<xsd:sequence>
+			<xsd:element name="default" type="DefaultType"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="option" type="ConfigureOptionType"
+				minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="ConfigureOptionType">
+		<xsd:sequence>
+			<xsd:element name="label" type="xsd:string" maxOccurs="1"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="value" type="xsd:string"></xsd:element>
+			<xsd:element name="dependencies" minOccurs="0"
+				type="DependenciesType">
+			</xsd:element>
+			<xsd:element name="subfields" type="FieldsDefinitionType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="VisibilityOptionsType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="enabled"></xsd:enumeration>
+			<xsd:enumeration value="invisible"></xsd:enumeration>
+			<xsd:enumeration value="disabled"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="VisibilityType">
+		<xsd:simpleContent>
+			<xsd:extension base="VisibilityOptionsType">
+				<xsd:attribute name="configurable" type="xsd:boolean"></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="DefaultType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="configurable" type="xsd:boolean"></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+</xsd:schema>

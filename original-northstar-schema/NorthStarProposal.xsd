@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.radionet-eu.org/NorthStar"
+			xmlns="http://www.radionet-eu.org/NorthStar"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:persistent="http://www.astron.nl/PersistentObjects"
+			xmlns:user="http://www.astron.nl/useradmin"
+			version="1.1">
+	<xsd:annotation>
+		<xsd:documentation>Definition of the common (shared) Northstar datamodel</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.astron.nl/useradmin"
+		schemaLocation="http://proposal.astron.nl/schemas/UserAdmin.xsd"></xsd:import>
+	<xsd:import namespace="http://www.astron.nl/PersistentObjects"
+		schemaLocation="http://proposal.astron.nl/schemas/PersistentObjects.xsd" />
+
+	<xsd:element name="proposals">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="proposal" maxOccurs="unbounded"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="proposal" type="ProposalType"></xsd:element>
+
+	<xsd:complexType name="ProposalType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="members" type="IndexedMemberListType" minOccurs="0" nillable="true">
+ 					</xsd:element>
+					<xsd:element name="justification"
+						type="JustificationType" minOccurs="0">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="observingRequest"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="additionalIssues"
+						type="AdditionalIssuesType" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="semester" type="SemesterRefType" minOccurs="0"></xsd:element>
+					<xsd:element name="statusHistory" type="StatusHistoryType" minOccurs="0"></xsd:element>
+					<xsd:element name="currentStatus" type="CurrentStatusType" minOccurs="0"></xsd:element>
+					<xsd:element name="document" type="ProposalDocumentType" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedMemberListType">
+		<xsd:sequence>
+			<xsd:element name="item" minOccurs="0"
+				maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="registeredMember"
+							type="RegisteredMemberType">
+						</xsd:element>
+						<xsd:element name="nonRegisteredMember"
+							type="NonRegisteredMemberType">
+						</xsd:element>
+					</xsd:choice>
+					<xsd:attribute name="index"
+						type="xsd:nonNegativeInteger">
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="MemberType" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="affiliation" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="email" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="country" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="roles" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence maxOccurs="unbounded">
+								<xsd:element ref="anyRole"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="MemberRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="MemberType">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:nonNegativeInteger"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="RoleType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="description" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="RoleRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="RoleType">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="anyRole" abstract="true" type="RoleRefType"/>
+
+	<xsd:element name="pi" substitutionGroup="anyRole">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="RoleRefType">
+					<xsd:sequence>
+						<xsd:element name="name" type="xsd:string" minOccurs="0" fixed="PI"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="1"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="contactAuthor" substitutionGroup="anyRole">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="RoleRefType">
+					<xsd:sequence>
+						<xsd:element name="name" type="xsd:string" minOccurs="0" fixed="Corresponding author"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="2"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="potentialObserver" substitutionGroup="anyRole">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="RoleRefType">
+					<xsd:sequence>
+						<xsd:element name="name" type="xsd:string" minOccurs="0" fixed="Potential observer"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="3"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="RegisteredMemberType">
+		<xsd:complexContent>
+			<xsd:extension base="MemberType">
+				<xsd:sequence>
+					<xsd:element name="user" type="user:UserRefType" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="NonRegisteredMemberType">
+		<xsd:complexContent>
+			<xsd:extension base="MemberType">
+				<xsd:sequence>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="JustificationType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence minOccurs="0" maxOccurs="1">
+					<xsd:element name="title" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="abstract" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="scientificFileMetaData" type="FileMetaDataType" minOccurs="0" nillable="true"></xsd:element>
+					<xsd:element name="technicalDetailsFileMetaData" type="FileMetaDataType" minOccurs="0" nillable="true"></xsd:element>
+					<xsd:element name="figureFileMetaData" type="FileMetaDataType" minOccurs="0" nillable="true"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="FileMetaDataType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="date" type="xsd:dateTime" minOccurs="0"></xsd:element>
+					<xsd:element name="size" type="xsd:integer" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="observingRequest" type="ObservingRequestType"></xsd:element>
+
+	<xsd:complexType name="ObservingRequestType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="observations" type="IndexedObservationListType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="overallRequiredSchedConstraints" type="xsd:string" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="overallPreferredSchedConstraints" type="xsd:string" minOccurs="0">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservingRequest"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="requestedAllocation" type="AllocationType" abstract="true"></xsd:element>
+
+	<xsd:complexType name="AllocationType">
+		<xsd:sequence>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="anyResource"></xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ResourceType" abstract="true">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:double">
+				<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+				<xsd:attribute name="unit" type="xsd:string"></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:element name="anyResource" type="ResourceType" abstract="true"></xsd:element>
+
+	<xsd:element name="observingTime" substitutionGroup="anyResource">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="ResourceType">
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element abstract="true" name="specificObservingRequest" type="SpecificObservingRequestType">
+	</xsd:element>
+
+	<xsd:complexType name="SpecificObservingRequestType">
+	</xsd:complexType>
+	
+	<xsd:complexType name="IndexedObservationListType">
+		<xsd:sequence>
+			<xsd:element name="item" maxOccurs="unbounded" type="IndexedObservationItemType" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedObservationItemType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:IndexedListItemType">
+				<xsd:choice>
+					<xsd:element ref="observation"></xsd:element>
+				</xsd:choice>
+			</xsd:extension>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="observation" type="ObservationType"></xsd:element>
+
+	<xsd:complexType name="ObservationType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="targets"
+						type="IndexedTargetRequestListType" minOccurs="0">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="requiredSchedConstraints" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="preferredSchedConstraints" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedTargetRequestListType">
+		<xsd:sequence>
+			<xsd:element name="targetRequest" maxOccurs="unbounded" type="IndexedTargetRequestType">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedTargetRequestType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:IndexedListItemType">
+                <xsd:sequence>
+					<xsd:element ref="target"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="target" type="TargetType"></xsd:element>
+
+	<xsd:complexType name="TargetType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="fieldName" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="ra" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="dec" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="epoch" type="EpochType" minOccurs="0"></xsd:element>
+					<xsd:element name="velocity" type="VelocityType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificTarget"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element abstract="true" name="specificTarget" type="SpecificTargetType">
+	</xsd:element>
+
+	<xsd:complexType name="SpecificTargetType">
+	</xsd:complexType>
+	
+	<xsd:element abstract="true" name="specificObservation" type="SpecificObservationType">
+	</xsd:element>
+
+	<xsd:complexType name="SpecificObservationType">
+	</xsd:complexType>
+	
+	<xsd:complexType name="AdditionalIssuesType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="linkedProposals" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="linkedProposalsElsewhere" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="previousAllocations" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="theses" type="IndexedThesisListType" minOccurs="0"></xsd:element>
+					<xsd:element name="additionalRemarks" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ThesisType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="student" minOccurs="0">						<xsd:complexType>							<xsd:choice>
+								<xsd:element name="applicant"
+									type="MemberRefType" minOccurs="1" maxOccurs="1">
+								</xsd:element>
+								<xsd:element name="name"
+									type="xsd:string">
+								</xsd:element>
+							</xsd:choice>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="supervisor" minOccurs="0">
+						<xsd:complexType>
+							<xsd:choice>
+								<xsd:element name="applicant"
+									type="MemberRefType" minOccurs="1" maxOccurs="1">
+								</xsd:element>
+								<xsd:element name="name"
+									type="xsd:string">
+								</xsd:element>
+							</xsd:choice>
+						</xsd:complexType>
+					</xsd:element>
+
+					<xsd:element name="expectedCompletionDate"
+						type="xsd:date" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="dataRequired" type="xsd:boolean" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedThesisListType">
+		<xsd:sequence>
+			<xsd:element name="item" maxOccurs="unbounded" type="IndexedThesisType">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedThesisType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:IndexedListItemType">
+                <xsd:sequence>
+					<xsd:element name="thesis" type="ThesisType"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="SemesterType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="prefix" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="startDateTime" type="xsd:dateTime" minOccurs="0"></xsd:element>
+					<xsd:element name="endDateTime" type="xsd:dateTime" minOccurs="0"></xsd:element>
+					<xsd:element name="deadlineDateTime" type="xsd:dateTime" minOccurs="0"></xsd:element>
+					<xsd:element name="lastAssigned" type="xsd:integer" minOccurs="0"></xsd:element>
+					<xsd:element name="telescope" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="category" type="CategoryType" minOccurs="0"></xsd:element>
+					<xsd:element name="semester" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="community" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CategoryType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="SemesterRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="SemesterType">
+				<xsd:sequence>
+					<xsd:element name="telescope" type="xsd:string"></xsd:element>
+					<xsd:element name="category" type="CategoryType"></xsd:element>
+					<xsd:element name="semester" type="xsd:string"></xsd:element>
+					<xsd:element name="community" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="StatusType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:PersistentObjectType">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="type" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+					<xsd:element name="description" type="xsd:string"
+						minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="StatusHistoryType">
+		<xsd:sequence>
+			<xsd:element name="item" maxOccurs="unbounded" type="StatusHistoryItemType">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="StatusHistoryItemType">
+		<xsd:complexContent>
+			<xsd:restriction base="IndexedProposalStatusItemType">
+				<xsd:choice>
+					<xsd:element name="proposalStatus"
+						type="ProposalStatusType">
+					</xsd:element>
+				</xsd:choice>
+				<xsd:attribute name="index" type="xsd:nonNegativeInteger">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedProposalStatusItemType">
+		<xsd:complexContent>
+			<xsd:extension base="persistent:IndexedListItemType">
+				<xsd:choice>
+					<xsd:element name="proposalStatus" minOccurs="0"
+						type="ProposalStatusType">
+					</xsd:element>
+				</xsd:choice>
+			</xsd:extension>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProposalStatusType">
+		<xsd:sequence>
+			<xsd:element name="user" type="user:UserRefType">
+			</xsd:element>
+			<xsd:element ref="anyStatus"></xsd:element>
+			<xsd:element name="timestamp" type="xsd:dateTime">
+				</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CurrentStatusType">
+		<xsd:choice>
+			<xsd:element name="proposalStatus" type="ProposalStatusRefType"/>
+			<xsd:element name="statusHistoryItem" type="StatusHistoryRefType"/>
+			<xsd:element ref="anyStatus"/>
+		</xsd:choice>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProposalStatusRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="persistent:PersistentObjectType">
+				<xsd:attribute name="id" type="xsd:integer"
+					use="required" />
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="StatusHistoryRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="IndexedProposalStatusItemType">
+				<xsd:attribute name="index" type="xsd:nonNegativeInteger"
+					use="required">
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="StatusRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="StatusType">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+		
+	<xsd:element name="anyStatus" abstract="true" type="StatusRefType"/>
+
+	<xsd:element name="inPreparationStatus" substitutionGroup="anyStatus">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="StatusRefType">
+					<xsd:sequence>
+						<xsd:element name="code" type="xsd:string" minOccurs="0" fixed="in preparation"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="1"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="submittedStatus" substitutionGroup="anyStatus">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="StatusRefType">
+					<xsd:sequence>
+						<xsd:element name="code" type="xsd:string" minOccurs="0" fixed="submitted"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="2"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="underReviewStatus" substitutionGroup="anyStatus">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="StatusRefType">
+					<xsd:sequence>
+						<xsd:element name="code" type="xsd:string" minOccurs="0" fixed="under review"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="3"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="acceptedStatus" substitutionGroup="anyStatus">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="StatusRefType">
+					<xsd:sequence>
+						<xsd:element name="code" type="xsd:string" minOccurs="0" fixed="accepted"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="4"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="rejectedStatus" substitutionGroup="anyStatus">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="StatusRefType">
+					<xsd:sequence>
+						<xsd:element name="code" type="xsd:string" minOccurs="0" fixed="rejected"></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="xsd:integer" fixed="5"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="ProposalDocumentType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"></xsd:element>
+			<xsd:element name="Uri" type="xsd:anyURI"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="EpochType">
+		<xsd:sequence>
+			<xsd:element name="definition" type="EpochDefinition"></xsd:element>
+			<xsd:element name="description" type="xsd:string" minOccurs="0"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="EpochDefinition">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="J2000"></xsd:enumeration>
+			<xsd:enumeration value="B1950"></xsd:enumeration>
+			<xsd:enumeration value="Other system"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="VelocityType">
+		<xsd:sequence>
+			<xsd:element name="definition" type="VelocityDefinition"></xsd:element>
+			<xsd:element name="description" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="value" type="xsd:double" minOccurs="0"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="VelocityDefinition">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Radio LSR (dynamical; km/s)"></xsd:enumeration>
+			<xsd:enumeration value="Optical LSR (dynamical; km/s)"></xsd:enumeration>
+			<xsd:enumeration value="Relativistic LSR (dynamical; km/s)"></xsd:enumeration>
+			<xsd:enumeration value="Radio Heliocentric (km/s)"></xsd:enumeration>
+			<xsd:enumeration value="Optical Heliocentric (km/s)"></xsd:enumeration>
+			<xsd:enumeration value="Relativistic Heliocentric (km/s)"></xsd:enumeration>
+			<xsd:enumeration value="Redshift"></xsd:enumeration>
+			<xsd:enumeration value="Other"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

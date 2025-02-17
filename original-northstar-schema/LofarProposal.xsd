@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.astron.nl/NorthStar-Lofar" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:northstar="http://www.radionet-eu.org/NorthStar" xmlns:persistent="http://www.astron.nl/PersistentObjects" xmlns:user="http://www.astron.nl/useradmin" xmlns="http://www.astron.nl/NorthStar-Lofar">
+	<xsd:import namespace="http://www.radionet-eu.org/NorthStar" schemaLocation="http://proposal.astron.nl/schemas/NorthStarProposal.xsd"></xsd:import>
+	<xsd:import namespace="http://www.astron.nl/useradmin" schemaLocation="http://proposal.astron.nl/schemas/UserAdmin.xsd"></xsd:import>
+	<xsd:import namespace="http://www.astron.nl/PersistentObjects" schemaLocation="http://proposal.astron.nl/schemas/PersistentObjects.xsd"/>
+
+	<xsd:complexType name="LofarObservingRequestType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ObservingRequestType">
+				<xsd:sequence>
+					<xsd:element name="observations" type="IndexedLofarObservationListType" minOccurs="0" />
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation" />
+					</xsd:choice>
+					<xsd:element name="overallRequiredSchedConstraints" type="xsd:string" minOccurs="0" />
+					<xsd:element name="overallPreferredSchedConstraints" type="xsd:string" minOccurs="0" />
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservingRequest" />
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0" />
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="requestedAllocation" type="LofarAllocationType" substitutionGroup="northstar:requestedAllocation"></xsd:element>
+
+	<xsd:complexType name="LofarAllocationType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:AllocationType">
+			 	<xsd:sequence>
+						<xsd:element ref="resource" maxOccurs="unbounded"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+    <xsd:element name="resource" type="LofarResourceType"></xsd:element>
+	<xsd:complexType name="LofarResourceType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:ResourceType">
+					<xsd:attribute name="queue" type="xsd:string"></xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	
+	<xsd:complexType name="SpecificLofarObservingRequestType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificObservingRequestType">
+				 <xsd:sequence>
+					<xsd:element name="nightTime" type="xsd:boolean"></xsd:element>
+					<xsd:element name="noiseLevel" type="xsd:double"></xsd:element>
+					<xsd:element name="proprietaryException" type="xsd:string"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element name="proprietaryExceptionSpecifics" type="xsd:string"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="specificObservingRequest" type="SpecificLofarObservingRequestType" substitutionGroup="northstar:specificObservingRequest">
+	</xsd:element>
+
+	<xsd:element name="target"
+		type="LofarTargetType"
+		substitutionGroup="northstar:target">
+	</xsd:element>
+	
+	<xsd:element name="specificTarget"
+		type="SpecificLofarTargetType"
+		substitutionGroup="northstar:specificTarget">
+	</xsd:element>
+	
+	<xsd:complexType name="SpecificLofarTargetType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificTargetType">
+				<xsd:sequence>
+					<xsd:element name="flux" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="fluxfrequency" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="spectralindex" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="comments" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element ref="requestedAllocation"  minOccurs="0" ></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="LofarTargetType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:TargetType">
+				<xsd:sequence>
+					<xsd:element name="fieldName" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="ra" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="dec" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="epoch" type="northstar:EpochType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificTarget"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="SpecificLofarObservationType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificObservationType">
+				<xsd:sequence>
+					<xsd:element name="telescope" type="xsd:string"></xsd:element>
+					<xsd:element name="instrument" type="LofarInstrumentType"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="specificObservation" type="SpecificLofarObservationType" substitutionGroup="northstar:specificObservation">
+	</xsd:element>
+	
+	<xsd:element name="observingRequest" type="LofarObservingRequestType" substitutionGroup="northstar:observingRequest">
+	</xsd:element>
+
+	<xsd:complexType name="IndexedLofarObservationListType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedObservationListType">
+				<xsd:sequence>
+					<xsd:element name="item" maxOccurs="unbounded" type="IndexedLofarObservationItemType" minOccurs="0">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedLofarObservationItemType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedObservationItemType">
+				<xsd:choice>
+					<xsd:element ref="observation"></xsd:element>
+				</xsd:choice>
+			</xsd:restriction>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="observation" type="LofarObservationType" substitutionGroup="northstar:observation"></xsd:element>
+
+	<xsd:complexType name="LofarObservationType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ObservationType">
+				<xsd:sequence>
+					<xsd:element name="targets"
+						type="IndexedLofarTargetRequestListType" minOccurs="0">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedLofarTargetRequestListType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedTargetRequestListType">
+				<xsd:sequence>
+					<xsd:element name="targetRequest" maxOccurs="unbounded" type="IndexedLofarTargetRequestType">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedLofarTargetRequestType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedTargetRequestType">
+                <xsd:sequence>
+					<xsd:element ref="target"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="northstar:requestedAllocation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:restriction>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="proposal" type="LofarProposalType" substitutionGroup="northstar:proposal"></xsd:element>
+
+	<xsd:complexType name="LofarProposalType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ProposalType">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="members" type="northstar:IndexedMemberListType" minOccurs="0" nillable="true">
+<!-- 
+						<xsd:unique name="index">
+							<xsd:selector xpath="registeredMember|nonRegisteredMember"/>
+							<xsd:field xpath="@index"/>
+						</xsd:unique>
+ -->
+ 					</xsd:element>
+					<xsd:element name="justification" type="northstar:JustificationType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="observingRequest" />
+					</xsd:choice>
+					<xsd:element name="additionalIssues" type="northstar:AdditionalIssuesType" minOccurs="0" />
+					<xsd:element name="semester" type="LofarSemesterRefType" minOccurs="0" />
+					<xsd:element name="statusHistory" type="northstar:StatusHistoryType" minOccurs="0" />
+					<xsd:element name="currentStatus" type="northstar:CurrentStatusType" minOccurs="0" />
+					<xsd:element name="document" type="northstar:ProposalDocumentType" minOccurs="0" />
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0" />
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="LofarSemesterRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:SemesterRefType">
+				<xsd:sequence>
+					<xsd:element name="telescope" type="xsd:string" fixed="lofar" />
+					<xsd:element name="category" type="northstar:CategoryType" />
+					<xsd:element name="semester" type="xsd:string" />
+					<xsd:element name="community" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="StationSelectionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Single"/>
+			<xsd:enumeration value="Superterp"/>
+			<xsd:enumeration value="Core"/>
+			<xsd:enumeration value="Dutch"/>
+			<xsd:enumeration value="All"/>
+			<xsd:enumeration value="Custom"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="FilterSelectionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="10-70 MHz"/>
+			<xsd:enumeration value="10-90 MHz"/>
+			<xsd:enumeration value="30-70 MHz"/>
+			<xsd:enumeration value="110-190 MHz"/>
+			<xsd:enumeration value="210-250 MHz"/>
+			<xsd:enumeration value="170-230 MHz"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ClockType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="160 MHz"/>
+			<xsd:enumeration value="200 MHz"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="AntennaSelectionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="HBA Zero"/>
+			<xsd:enumeration value="HBA One"/>
+			<xsd:enumeration value="HBA Dual"/>
+			<xsd:enumeration value="HBA Joined"/>
+			<xsd:enumeration value="LBA Outer"/>
+			<xsd:enumeration value="LBA Inner"/>
+			<xsd:enumeration value="LBA Sparse Even"/>
+			<xsd:enumeration value="LBA Sparse Odd"/>
+			<xsd:enumeration value="LBA X"/>
+			<xsd:enumeration value="LBA Y"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="LofarInstrumentType" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="clock" type="ClockType" minOccurs="0"></xsd:element>
+			<xsd:element name="filter" type="FilterSelectionType" minOccurs="0"></xsd:element>
+			<xsd:element name="filterFrequency" type="FrequencyType" minOccurs="0"></xsd:element>
+			<xsd:element name="filterBandwidth" type="FrequencyType" minOccurs="0"></xsd:element>
+			<xsd:element name="filterContiguousCoverage" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="antenna" type="AntennaSelectionType" minOccurs="0"></xsd:element>
+			<xsd:element name="piggyBack" type="xsd:boolean" minOccurs="0"></xsd:element>
+			<xsd:element name="piggyBackSpecifics" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="flagging" type="xsd:boolean" minOccurs="0"></xsd:element>
+			<xsd:element name="calibration" type="xsd:boolean" minOccurs="0"></xsd:element>
+		</xsd:sequence>	
+	</xsd:complexType>
+
+	<xsd:simpleType name="InterferoInstrumentNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Interferometer"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	
+	<xsd:simpleType name="BeamInstrumentNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Beam Observation"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+
+	<xsd:simpleType name="TransientBufferBoardInstrumentNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="TBB (standalone)"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TransientBufferBoardPiggyInstrumentNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="TBB (piggyback)"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	
+	<xsd:simpleType name="NonStandardInstrumentNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Non Standard"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	
+	<xsd:complexType name="InterferoInstrumentType">
+		<xsd:complexContent>
+			<xsd:extension base="LofarInstrumentType">
+				<xsd:sequence>
+						<xsd:element name="stations" type="StationSelectionType" minOccurs="0"></xsd:element>
+						<xsd:element name="stationSpecifics" type="xsd:string" minOccurs="0"></xsd:element>
+						<xsd:element name="integrationTime" type="TimeType" minOccurs="0"></xsd:element>
+						<xsd:element name="subarrayPointings" type="xsd:nonNegativeInteger" minOccurs="0"></xsd:element>
+						<xsd:element name="storeRawData" type="xsd:boolean" minOccurs="0"></xsd:element>
+						
+						<xsd:element name="pixelSizeX" type="xsd:nonNegativeInteger" minOccurs="0"></xsd:element>
+						<xsd:element name="pixelSizeY" type="xsd:nonNegativeInteger" minOccurs="0"></xsd:element>
+						<xsd:element name="pixelSizeZ" type="xsd:nonNegativeInteger" minOccurs="0"></xsd:element>
+						
+						<xsd:element name="polarizations" type="PolarizationSelectionType" minOccurs="0"></xsd:element>
+						<xsd:element name="averaging" type="xsd:boolean" minOccurs="0"></xsd:element>
+						<xsd:element name="averagingTime" type="TimeType" minOccurs="0"></xsd:element>
+						<xsd:element name="averagingFrequency" type="FrequencyType" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="InterferoInstrumentNameType" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="BeamInstrumentType">
+		<xsd:complexContent>
+			<xsd:extension base="LofarInstrumentType">
+				<xsd:sequence>
+					<xsd:element name="stations" type="StationSelectionType" minOccurs="0"></xsd:element>
+					<xsd:element name="stationSpecifics" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="beams" type="xsd:int" minOccurs="0"></xsd:element>
+					<xsd:element name="sampleRate" type="FrequencyType" minOccurs="0"></xsd:element>
+					<xsd:element name="cohstokes" type="xsd:boolean" minOccurs="0"></xsd:element>
+					<xsd:element name="polarization" type="PolarizationSelectionType" minOccurs="0"></xsd:element>
+					<xsd:element name="incohstokes" type="xsd:boolean" minOccurs="0"></xsd:element>
+					<xsd:element name="incpolarization" type="PolarizationSelectionType" minOccurs="0"></xsd:element>
+					<xsd:element name="channels" type="xsd:int" minOccurs="0"></xsd:element>
+					<xsd:element name="intsteps" type="xsd:int" minOccurs="0"></xsd:element>
+					<xsd:element name="complexvoltage" type="xsd:boolean" minOccurs="0"></xsd:element>
+					<xsd:element name="flyseye" type="xsd:boolean" minOccurs="0"></xsd:element>
+					<xsd:element name="rawvoltage" type="xsd:boolean" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="BeamInstrumentNameType" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TransientBufferBoardInstrumentType">
+		<xsd:complexContent>
+			<xsd:extension base="LofarInstrumentType">
+				<xsd:sequence>
+					<xsd:element name="stations" type="StationSelectionType" minOccurs="0"></xsd:element>
+					<xsd:element name="stationSpecifics" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="events" type="xsd:int" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="TransientBufferBoardInstrumentNameType" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+
+	<xsd:complexType name="TransientBufferBoardPiggyInstrumentType">
+		<xsd:complexContent>
+			<xsd:extension base="LofarInstrumentType">
+				<xsd:sequence>
+					<xsd:element name="stations" type="StationSelectionType" minOccurs="0"></xsd:element>
+					<xsd:element name="stationSpecifics" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="events" type="xsd:int" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="TransientBufferBoardPiggyInstrumentNameType" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="DirectDataStorageInstrumentType">
+		<xsd:complexContent>
+			<xsd:extension base="LofarInstrumentType">
+				<xsd:sequence>
+					<xsd:element name="stations" type="StationSelectionType" minOccurs="0"></xsd:element>
+					<xsd:element name="stationSpecifics" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="beams" type="xsd:int" minOccurs="0"></xsd:element>
+					<xsd:element name="sampleRate" type="FrequencyType" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="DirectDataStorageInstrumentNameType" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="DirectDataStorageInstrumentNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Direct Data Storage"/>
+		</xsd:restriction>
+	</xsd:simpleType>			
+	
+	<xsd:complexType name="NonStandardInstrumentType">
+		<xsd:complexContent>
+			<xsd:extension base="LofarInstrumentType">
+				<xsd:choice>
+					<xsd:element name="specifics" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:choice>
+				<xsd:attribute name="name" type="NonStandardInstrumentNameType" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="PolarizationSelectionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="I"/>
+			<xsd:enumeration value="IQUV"/>
+			<xsd:enumeration value="XXYY"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="TimeType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:double">
+				<xsd:attribute name="unit">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="seconds"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="FrequencyType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:double">
+				<xsd:attribute name="unit">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="Hz"/>
+							<xsd:enumeration value="KHz"/>
+							<xsd:enumeration value="MHz"/>
+							<xsd:enumeration value="GHz"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	
+	
+</xsd:schema>
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/northstar-config-telescope" xmlns:tns="http://www.example.org/northstar-config-telescope">
+	<element name="northstar-telescope-configurations">
+		<complexType>
+			<sequence>
+				<element name="northstar-telescope-configuration">
+					<complexType>
+						<sequence>
+							<element name="starttime" type="string"></element>
+							<element name="endtime" type="string" maxOccurs="1" minOccurs="0"></element>
+							<element name="community" type="string"></element>
+							<element name="version" type="string"></element>
+							<element name="struts-module" type="string"></element>
+							<element name="header-image" type="string"></element>
+							<element name="pdf-header-image" type="string"></element>
+							<element name="telescopeastronomer" type="string" maxOccurs="1" minOccurs="0"></element>
+							<element name="director" type="string" maxOccurs="1" minOccurs="0"></element>
+							<element name="committee" type="string"></element>
+							<element name="proposaldelegate" type="string"></element>
+							<element name="emailgenerator" type="string"></element>
+							<element name="proposalvalidator" type="string"></element>
+							<element name="targetlistparser" type="string">
+							</element>
+							<element name="pdfwriter" type="string"></element>
+							<element name="xmlwriter" type="string"></element>
+							<element name="observingrequest" type="string"></element>
+							<element name="observation" type="string"></element>
+							<element name="max-number-of-observations" type="int" maxOccurs="1" minOccurs="0"></element>
+							<element name="max-words-for-abstract" type="string" maxOccurs="1" minOccurs="0"></element>
+							<element name="max-chars-for-title" type="string" maxOccurs="1" minOccurs="0"></element>
+							<element name="mapping-files" maxOccurs="1" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="mapping-file" type="string" maxOccurs="unbounded" minOccurs="0">
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="option-validation-file" type="string" maxOccurs="1" minOccurs="0"></element>
+							<element name="other-files" maxOccurs="1" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="other-file" maxOccurs="unbounded" minOccurs="0">
+											<complexType>
+												<sequence>
+													<element name="parser" type="string">
+													</element>
+													<element name="file" type="string">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="emails">
+								<complexType>
+									<sequence>
+										<element name="email">
+											<complexType>
+												<sequence>
+													<element name="type" type="string">
+													</element>
+													<element name="uri" type="string" maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="bcc" type="string">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>

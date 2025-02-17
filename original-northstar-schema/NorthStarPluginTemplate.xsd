@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- 
+		
+		This is a template for the definition of the datamodel and
+		interfacing XML structure for a NorthStar specific instrument
+		plugin module.
+		
+		It requires four steps for adaptation:
+		
+		1. Rename the file, e.g. to "YourInstrumentProposal.xsd"
+		
+		2. Change the target namespace definitions
+	     
+	    - targetNamespace="http://www.radionet-eu.org/NorthStar-Plugin"
+	    - xmlns="http://www.radionet-eu.org/NorthStar-Plugin"
+	     
+	    to an appropriate one, e.g.
+	     
+	    http://www.YourOrganisation.org/Northstar-YourInstrument
+	    
+	    (NB this does not have to be a valid path; the name space
+	    is simply an identifier)
+	    
+		3. Replace every occurence of "Plugin" within this schema
+	    with the name of the instrument for which the plugin is to
+	    be defined. (Start after, or remove, this comment)
+	    
+	    4. Extend the "SpecificPluginObservingRequestType",
+	    "SpecificPluginObservationType", and "PluginAllocationType"
+	    defintions with data elements appropriate to the instrument.
+	    
+	    If needed, add type definitions and global element definitions
+	    to create more complex specific datamodels (for an example take
+	    a look at http://proposal.astron.nl/NorthStar-WSRT.xsd).
+	    
+	    Depending on the required complexity this will assume a basic
+	    or more advanced level of knowledge about the XML schema definition
+	    language. For a starter take a look at: http://www.w3.org/TR/xmlschema-0/
+	 
+	    NB If this schema is to be used for automated interfacing, it should be
+	    published on a webserver to enable referencing to it from any other
+	    location than the local machine.
+	    
+	    NB2: Naturally, this schema should be accompanied by NorthStar Plugin
+	    code that provides functionality for the instrument specific web and
+	    XML interfaces.
+	    
+	    H.A. Holties, ASTRON Radio Observatory Division, December 2005
+
+	-->
+	     
+<xsd:schema targetNamespace="http://www.radionet-eu.org/NorthStar-Plugin"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:northstar="http://www.radionet-eu.org/NorthStar"
+			xmlns:persistent="http://www.astron.nl/PersistentObjects"
+			xmlns:user="http://www.astron.nl/useradmin"
+			xmlns="http://www.radionet-eu.org/NorthStar-Plugin"
+			version="1.0">
+	<xsd:import namespace="http://www.radionet-eu.org/NorthStar"
+		schemaLocation="http://proposal.astron.nl/schemas/NorthStarProposal.xsd"></xsd:import>
+	<xsd:import namespace="http://www.astron.nl/useradmin"
+		schemaLocation="http://proposal.astron.nl/schemas/UserAdmin.xsd"></xsd:import>
+	<xsd:import namespace="http://www.astron.nl/PersistentObjects"
+		schemaLocation="http://proposal.astron.nl/schemas/PersistentObjects.xsd" />
+
+	<xsd:complexType name="SpecificPluginObservingRequestType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificObservingRequestType">
+				<xsd:sequence>
+					<!-- Place the specific observing request elements here -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="SpecificPluginObservationType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificObservationType">
+				<xsd:sequence>
+					<!-- Place the specific observation elements here -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="SpecificPluginTargetType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificTargetType">
+				<xsd:sequence>
+					<!-- Place the specific observation elements here -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="PluginAllocationType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:AllocationType">
+				<xsd:sequence>
+					<!-- 
+
+						Place the specific allocation elements here
+					
+						NB: elements must be of a type derived from
+						"northstar:ResourceType"
+						
+						The northstar common schema provides resource
+						elements that can be referenced, e.g.:
+						
+						<xsd:element ref="northstar:observingTime"/>
+						
+						choosing northstar elements enables copying
+						of resources between instruments (if both
+						contain the same referenced element)
+						
+					-->
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<!-- If the definition of Plugin specific types and/or elements
+	     is required, put them here -->
+	
+	<!-- Below this line only replace occurences of "Plugin"
+	     with the name of the Instrument.
+	     
+	     Do not change anything else!!! -->
+	
+	<xsd:element name="proposal"
+		type="PluginProposalType"
+		substitutionGroup="northstar:proposal">
+		<!--  This is the main element of this schema.
+		Within an XML document it may be part of the NorthStar
+		"proposals" element as follows:
+		
+		<northstar:proposals>
+			<proposal>
+				...
+				This proposal schema has been defined as the
+				"default" namespace
+				...
+			</proposal>
+			<wsrt:proposal>
+				...
+				proposals for different instruments may be part
+				of the same document if proper namespace definitions
+				and referencing to the appropriate schema files is
+				used
+				...
+			<wsrt:proposal>
+		<northstar:proposals>
+		
+		 -->
+	</xsd:element>
+
+	<xsd:element name="observingRequest"
+		type="PluginObservingRequestType"
+		substitutionGroup="northstar:observingRequest">
+	</xsd:element>
+
+	<xsd:element name="requestedAllocation"
+		type="PluginAllocationType"
+		substitutionGroup="northstar:requestedAllocation">
+	</xsd:element>
+
+	<xsd:element name="specificObservingRequest"
+		type="SpecificPluginObservingRequestType"
+		substitutionGroup="northstar:specificObservingRequest">
+	</xsd:element>
+
+	<xsd:element name="observation"
+		type="PluginObservationType"
+		substitutionGroup="northstar:observation">
+	</xsd:element>
+
+	<xsd:element name="specificObservation"
+		type="SpecificPluginObservationType"
+		substitutionGroup="northstar:specificObservation">
+	</xsd:element>
+
+	<xsd:element name="target"
+		type="PluginTargetType"
+		substitutionGroup="northstar:target">
+	</xsd:element>
+
+	<xsd:element name="specificTarget"
+		type="SpecificPluginTargetType"
+		substitutionGroup="northstar:specificTarget">
+	</xsd:element>
+
+	<xsd:complexType name="PluginProposalType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ProposalType">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="members" type="northstar:IndexedMemberListType" minOccurs="0" nillable="true">
+ 					</xsd:element>
+					<xsd:element name="justification" type="northstar:JustificationType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="observingRequest"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="additionalIssues" type="northstar:AdditionalIssuesType" minOccurs="0"></xsd:element>
+					<xsd:element name="semester" type="PluginSemesterRefType" minOccurs="0"></xsd:element>
+					<xsd:element name="statusHistory" type="northstar:StatusHistoryType" minOccurs="0"></xsd:element>
+					<xsd:element name="currentStatus" type="northstar:CurrentStatusType" minOccurs="0"></xsd:element>
+					<xsd:element name="document" type="northstar:ProposalDocumentType" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="PluginSemesterRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:SemesterRefType">
+				<xsd:sequence>
+					<xsd:element name="telescope" type="xsd:string" fixed="Plugin"></xsd:element>
+					<xsd:element name="category" type="northstar:CategoryType"></xsd:element>
+					<xsd:element name="semester" type="xsd:string"></xsd:element>
+					<xsd:element name="community" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="PluginObservingRequestType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ObservingRequestType">
+				<xsd:sequence>
+					<xsd:element name="observations" type="IndexedPluginObservationListType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="overallRequiredSchedConstraints" type="xsd:string" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="overallPreferredSchedConstraints" type="xsd:string" minOccurs="0">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservingRequest"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="PluginObservationType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ObservationType">
+				<xsd:sequence>
+					<xsd:element name="targets" type="IndexedPluginTargetRequestListType">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="requiredSchedConstraints" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="preferredSchedConstraints" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="PluginTargetType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:TargetType">
+				<xsd:sequence>
+					<xsd:element name="fieldName" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="ra" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="dec" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="epoch" type="northstar:EpochType" minOccurs="0"></xsd:element>
+					<xsd:element name="velocity" type="northstar:VelocityType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificTarget"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedPluginObservationListType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedObservationListType">
+				<xsd:sequence>
+					<xsd:element name="item" maxOccurs="unbounded" type="IndexedPluginObservationItemType">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedPluginObservationItemType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedObservationItemType">
+				<xsd:choice>
+					<xsd:element ref="observation"></xsd:element>
+				</xsd:choice>
+			</xsd:restriction>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedPluginTargetRequestListType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedTargetRequestListType">
+				<xsd:sequence>
+					<xsd:element name="targetRequest" maxOccurs="unbounded" type="IndexedPluginTargetRequestType">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedPluginTargetRequestType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedTargetRequestType">
+                <xsd:sequence>
+					<xsd:element ref="target"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:restriction>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>

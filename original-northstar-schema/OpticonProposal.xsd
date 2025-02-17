@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	     
+<xsd:schema targetNamespace="http://www.astro-opticon.org/NorthStar-Opticon"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:northstar="http://www.radionet-eu.org/NorthStar"
+			xmlns:persistent="http://www.astron.nl/PersistentObjects"
+			xmlns:user="http://www.astron.nl/useradmin"
+			xmlns="http://www.astro-opticon.org/NorthStar-Opticon"
+			version="1.0">
+ 	<xsd:import namespace="http://www.radionet-eu.org/NorthStar"
+		schemaLocation="http://proposal.astron.nl/schemas/NorthStarProposal.xsd"></xsd:import>
+<!--  	<xsd:import namespace="http://www.radionet-eu.org/NorthStar"
+		schemaLocation="file:///R:/NorthStar-common-lib/datamodel/NorthStarProposal.xsd"></xsd:import> -->
+	<xsd:import namespace="http://www.astron.nl/useradmin"
+		schemaLocation="http://proposal.astron.nl/schemas/UserAdmin.xsd"></xsd:import>
+	<xsd:import namespace="http://www.astron.nl/PersistentObjects"
+		schemaLocation="http://proposal.astron.nl/schemas/PersistentObjects.xsd" />
+
+	<xsd:complexType name="SpecificOpticonObservingRequestType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificObservingRequestType">
+				<xsd:sequence>
+					<xsd:element name="serviceMode" type="xsd:string"></xsd:element>
+					<xsd:element name="longTermProposalDetails" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="largeProposal" type="xsd:boolean"></xsd:element>
+					<xsd:element name="allocationJustification" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="SpecificOpticonObservationType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificObservationType">
+				<xsd:sequence>
+					<xsd:element name="telescope" type="xsd:string"></xsd:element>
+					<xsd:element name="instrument" type="OpticonInstrument" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="SpecificOpticonTargetType">
+		<xsd:complexContent>
+			<xsd:extension base="northstar:SpecificTargetType">
+				<xsd:sequence>
+					<xsd:element name="moon" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="seeing" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="water" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="sn" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="magnitude" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="flux" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="fluxfrequency" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="spectralindex" type="xsd:double" minOccurs="0"></xsd:element>
+					<xsd:element name="comments" type="xsd:string" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="OpticonInstrument">
+		<xsd:sequence>
+			<xsd:element name="filters" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+						<xsd:element name="filter" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="filterDetails" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="readOut" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="mode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="orderFilter" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="polarimetry" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="guideline" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="wavelength" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="order" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="slit" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="slitPositionAngle" type="xsd:double" minOccurs="0"/>
+			<xsd:element name="grating" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="grism" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="comments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="defaultFrameExposureTime" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="frameExposureTime" type="xsd:double" minOccurs="0"/>
+			<xsd:element name="microstepping" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="coronagraphicMask" type="xsd:boolean" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpticonAllocationType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:AllocationType">
+				<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="resource"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpticonResourceType" abstract="true">
+		<xsd:simpleContent>
+			<xsd:extension base="northstar:ResourceType">
+				<xsd:attribute name="queue" type="xsd:string"></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:element name="resource" substitutionGroup="northstar:anyResource">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="OpticonResourceType">
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- If the definition of Plugin specific types and/or elements
+	     is required, put them here -->
+	
+	<!-- Below this line only replace occurences of "Plugin"
+	     with the name of the Instrument.
+	     
+	     Do not change anything else!!! -->
+	
+	<xsd:element name="proposal"
+		type="OpticonProposalType"
+		substitutionGroup="northstar:proposal">
+		<!--  This is the main element of this schema.
+		Within an XML document it may be part of the NorthStar
+		"proposals" element as follows:
+		
+		<northstar:proposals>
+			<proposal>
+				...
+				This proposal schema has been defined as the
+				"default" namespace
+				...
+			</proposal>
+			<wsrt:proposal>
+				...
+				proposals for different instruments may be part
+				of the same document if proper namespace definitions
+				and referencing to the appropriate schema files is
+				used
+				...
+			<wsrt:proposal>
+		<northstar:proposals>
+		
+		 -->
+	</xsd:element>
+
+	<xsd:element name="observingRequest"
+		type="OpticonObservingRequestType"
+		substitutionGroup="northstar:observingRequest">
+	</xsd:element>
+
+	<xsd:element name="requestedAllocation"
+		type="OpticonAllocationType"
+		substitutionGroup="northstar:requestedAllocation">
+	</xsd:element>
+
+	<xsd:element name="specificObservingRequest"
+		type="SpecificOpticonObservingRequestType"
+		substitutionGroup="northstar:specificObservingRequest">
+	</xsd:element>
+
+	<xsd:element name="observation"
+		type="OpticonObservationType"
+		substitutionGroup="northstar:observation">
+	</xsd:element>
+
+	<xsd:element name="specificObservation"
+		type="SpecificOpticonObservationType"
+		substitutionGroup="northstar:specificObservation">
+	</xsd:element>
+
+	<xsd:element name="target"
+		type="OpticonTargetType"
+		substitutionGroup="northstar:target">
+	</xsd:element>
+
+	<xsd:element name="specificTarget"
+		type="SpecificOpticonTargetType"
+		substitutionGroup="northstar:specificTarget">
+	</xsd:element>
+
+	<xsd:complexType name="OpticonProposalType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ProposalType">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="members" type="northstar:IndexedMemberListType" minOccurs="0" nillable="true">
+ 					</xsd:element>
+					<xsd:element name="justification" type="northstar:JustificationType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="observingRequest"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="additionalIssues" type="northstar:AdditionalIssuesType" minOccurs="0"></xsd:element>
+					<xsd:element name="semester" type="OpticonSemesterRefType" minOccurs="0"></xsd:element>
+					<xsd:element name="statusHistory" type="northstar:StatusHistoryType" minOccurs="0"></xsd:element>
+					<xsd:element name="currentStatus" type="northstar:CurrentStatusType" minOccurs="0"></xsd:element>
+					<xsd:element name="document" type="northstar:ProposalDocumentType" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpticonSemesterRefType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:SemesterRefType">
+				<xsd:sequence>
+					<xsd:element name="telescope" type="xsd:string" fixed="opticon"></xsd:element>
+					<xsd:element name="category" type="northstar:CategoryType"></xsd:element>
+					<xsd:element name="semester" type="xsd:string"></xsd:element>
+					<xsd:element name="community" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpticonObservingRequestType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ObservingRequestType">
+				<xsd:sequence>
+					<xsd:element name="observations" type="IndexedOpticonObservationListType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="overallRequiredSchedConstraints" type="xsd:string" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="overallPreferredSchedConstraints" type="xsd:string" minOccurs="0">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservingRequest"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpticonObservationType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:ObservationType">
+				<xsd:sequence>
+					<xsd:element name="targets" type="IndexedOpticonTargetRequestListType">
+					</xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="requestedAllocation"></xsd:element>
+					</xsd:choice>
+					<xsd:element name="requiredSchedConstraints" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="preferredSchedConstraints" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificObservation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedOpticonObservationListType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedObservationListType">
+				<xsd:sequence>
+					<xsd:element name="item" maxOccurs="unbounded" type="IndexedOpticonObservationItemType">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedOpticonObservationItemType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedObservationItemType">
+				<xsd:choice>
+					<xsd:element ref="observation"></xsd:element>
+				</xsd:choice>
+			</xsd:restriction>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpticonTargetType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:TargetType">
+				<xsd:sequence>
+					<xsd:element name="fieldName" type="xsd:string" minOccurs="0"></xsd:element>
+					<xsd:element name="ra" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="dec" type="xsd:decimal" minOccurs="0"></xsd:element>
+					<xsd:element name="epoch" type="northstar:EpochType" minOccurs="0"></xsd:element>
+					<xsd:element name="velocity" type="northstar:VelocityType" minOccurs="0"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="specificTarget"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:integer" default="0"></xsd:attribute>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+
+	<xsd:complexType name="IndexedOpticonTargetRequestListType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedTargetRequestListType">
+				<xsd:sequence>
+					<xsd:element name="targetRequest" maxOccurs="unbounded" type="IndexedOpticonTargetRequestType">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndexedOpticonTargetRequestType">
+		<xsd:complexContent>
+			<xsd:restriction base="northstar:IndexedTargetRequestType">
+                <xsd:sequence>
+					<xsd:element ref="target"></xsd:element>
+					<xsd:choice minOccurs="0">
+						<xsd:element ref="northstar:requestedAllocation"></xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:restriction>	
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>
