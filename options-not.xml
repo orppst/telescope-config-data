@@ -23,8 +23,7 @@
 					<boolean name="instrumentPolarimetry" />
 					<optionlist name="instrumentGrismw" />
 					<optionlist name="instrumentSlitw" />
-					<text name="instrumentComments"
-						required="false" />
+					<text name="instrumentComments"/>
 				</subfields>
 				<dependencies>
 	        		<or>
@@ -44,8 +43,7 @@
 					<optionlist name="instrumentGrismw" />
 					<optionlist name="instrumentSlitw" />
 					<!-- <text name="instrumentFrameExposureTimeDetails" /> -->
-					<text name="instrumentComments"
-						required="false" />
+					<text name="instrumentComments" />
 				</subfields>
 				<dependencies>
 	        		<or>

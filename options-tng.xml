@@ -19,8 +19,7 @@
 					<optionlist name="instrumentMode" />
 					<optionlist name="instrumentGrismw" />
 					<optionlist name="instrumentSlitw" />
-                                	<text name="instrumentComments" 
-					      required="false"/>
+					<text name="instrumentComments"/>
 				</subfields>
 
       	   		<dependencies>
@@ -38,8 +37,7 @@
 					<optionlist name="instrumentGrismw" />
 					<optionlist name="instrumentSlitw" />
     					<boolean name="instrumentPolarimetry" />
-					<text name="instrumentComments" 
-					      required="false"/>
+					<text name="instrumentComments" />
 				</subfields>
       	   		<dependencies>
 	        		<or>
@@ -51,8 +49,7 @@
         		<value>HARPS-N</value>
             <subfields>
 					<optionlist name="instrumentUrl" />
-                                	<text name="instrumentComments" 
-					      required="false"/>
+                    <text name="instrumentComments"/>
 				</subfields>
       	   		<dependencies>
 	        		<or>
@@ -64,8 +61,7 @@
         		<value>GIANO-B</value>
            <subfields>
 					<optionlist name="instrumentUrl" />
-                                	<text name="instrumentComments" 
-					      required="false"/>
+					<text name="instrumentComments"/>
 				</subfields>
       	   		<dependencies>
 	        		<or>
@@ -77,8 +73,7 @@
         		<value>GIARPS</value>
            <subfields>
 					<optionlist name="instrumentUrl" />
-                                	<text name="instrumentComments" 
-					      required="false"/>
+					<text name="instrumentComments"/>
 				</subfields>
       	   		<dependencies>
 	        		<or>

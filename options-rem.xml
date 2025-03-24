@@ -21,7 +21,7 @@
                     <text name="instrumentCustomFilter"/>
                     <optionlist name="instrumentMode" />
                     <!--<optionlist name="instrumentGrism" />-->
-                    <text name="instrumentComments"  required="false"/>
+                    <text name="instrumentComments"/>
                 </subfields>
 
                      <dependencies>
@@ -39,7 +39,7 @@
 	       	    <boolean name="telescopeHours" />
                     <optionlist name="instrumentFilter" />
                     <optionlist name="instrumentMode" />
-                    <text name="instrumentComments"    required="false"/>
+                    <text name="instrumentComments"/>
                 </subfields>
                      <dependencies>
                     <or>
