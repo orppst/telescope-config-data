@@ -6,6 +6,9 @@
 				<optionlist name="instrumentConfigurations"/>
 			</subfields>
 		</option>
+		<option name="TIME">
+			<value>8</value>
+		</option>
 	</options>
 	<options name="instrumentConfigurations">
 		<!-- Anglo-Australian Telescope -->
